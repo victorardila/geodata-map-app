@@ -2,7 +2,7 @@
 
 ## 📍 Mapa Interactivo de Calidad del Aire en Colombia
 
-<img src="https://leafletjs.com/docs/images/logo.png" width="300" height="70">
+<img src="https://leafletjs.com/docs/images/logo.png" width="200" height="50">
 
 ## 📜 Descripción
 
