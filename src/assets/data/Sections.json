@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "Title": "Section One",
+        "Description": "This is the first section of the page.",
+        "Image": "https://via.placeholder.com/150",
+        "Link": "https://www.google.com",
+        "Tag": "a",
+        "LinkText": "Learn More",
+        "Button": "Click Me"
+    },
+    {
+        "id": 2,
+        "Title": "Section Two",
+        "Description": "This is the second section of the page.",
+        "Image": "https://via.placeholder.com/150",
+        "Link": "https://www.google.com",
+        "tag": "a",
+        "LinkText": "Learn More",
+        "Button": "Click Me"
+    },
+    {
+        "id": 3,
+        "Title": "Section Three",
+        "Description": "This is the third section of the page.",
+        "Image": "https://via.placeholder.com/150",
+        "Link": "https://www.google.com",
+        "tag": "a",
+        "LinkText": "Learn More",
+        "Button": "Click Me"
+    },
+    {
+        "id": 4,
+        "Title": "Section Four",
+        "Description": "This is the fourth section of the page.",
+        "Image": "https://via.placeholder.com/150",
+        "Link": "https://www.google.com",
+        "tag": "a",
+        "LinkText": "Learn More",
+        "Button": "Click Me"
+    },
+    {
+        "id": 5,
+        "Title": "Section Five",
+        "Description": "This is the fifth section of the page.",
+        "Image": "https://via.placeholder.com/150",
+        "Link": "https://www.google.com",
+        "tag": "a",
+        "LinkText": "Learn More",
+        "Button": "Click Me"
+    }
+]

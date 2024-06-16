@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GeoData Map App",
+  "name": "Mapa de geolocalizacion de datos",
   "icons": [
     {
       "src": "favicon.ico",
