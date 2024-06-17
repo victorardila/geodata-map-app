@@ -17,13 +17,7 @@ function Content() {
           tag={section.Tag}
           linkText={section.LinkText}
           button={section.Button}
-          style={{
-            display: "flex",
-            width: "100%",
-            height: "100vh",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          layout={section.Layout}
         />
       ))}
       <Footer />

@@ -1,8 +1,9 @@
 [
     {
         "id": 1,
-        "Title": "Section One",
-        "Description": "This is the first section of the page.",
+        "Layout": "overlay",
+        "Title": "",
+        "Description": "",
         "Image": "https://via.placeholder.com/150",
         "Link": "https://www.google.com",
         "Tag": "a",
@@ -11,6 +12,7 @@
     },
     {
         "id": 2,
+        "Layout": "sequential",
         "Title": "Section Two",
         "Description": "This is the second section of the page.",
         "Image": "https://via.placeholder.com/150",
@@ -21,6 +23,7 @@
     },
     {
         "id": 3,
+        "Layout": "grid-3-cols",
         "Title": "Section Three",
         "Description": "This is the third section of the page.",
         "Image": "https://via.placeholder.com/150",
@@ -31,6 +34,7 @@
     },
     {
         "id": 4,
+        "Layout": "title-over-image",
         "Title": "Section Four",
         "Description": "This is the fourth section of the page.",
         "Image": "https://via.placeholder.com/150",
@@ -41,6 +45,7 @@
     },
     {
         "id": 5,
+        "Layout": "columnar",
         "Title": "Section Five",
         "Description": "This is the fifth section of the page.",
         "Image": "https://via.placeholder.com/150",
