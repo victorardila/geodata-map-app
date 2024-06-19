@@ -4,6 +4,8 @@
 
 <img src="https://leafletjs.com/docs/images/logo.png" width="200" height="50">
 
+![Selección_021](https://github.com/Valfonsoardila10/Geodata-map-app/assets/106699036/cf5db26e-f6ba-4d4a-b290-f5e71b37a305)
+
 ## 📜 Descripción
 
 Este proyecto visualiza datos georreferenciados sobre la calidad del aire en diferentes departamentos y municipios de Colombia. Utilizando la librería [Leaflet](https://leafletjs.com/), se presenta un mapa interactivo que muestra la concentración de contaminantes del aire mediante un mapa de calor. Esta herramienta es útil para observar y analizar la distribución de la calidad del aire en todo el país.
