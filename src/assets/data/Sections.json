@@ -2,56 +2,61 @@
     {
         "id": 1,
         "Layout": "overlay",
-        "Title": "",
-        "Description": "",
-        "Image": "https://via.placeholder.com/150",
+        "Title": "GEODATA MAP",
+        "Description": "Software para la gestión y análisis de datos geográficos sobre un mapa interactivos.",
+        "Image": "presentation.png",
         "Link": "https://www.google.com",
         "Tag": "a",
         "LinkText": "Learn More",
-        "Button": "Click Me"
+        "Button": "Click Me",
+        "Component": ""
     },
     {
         "id": 2,
-        "Layout": "sequential",
-        "Title": "Section Two",
-        "Description": "This is the second section of the page.",
-        "Image": "https://via.placeholder.com/150",
+        "Layout": "grid-3-cols",
+        "Title": "Funcionalidades",
+        "Description": "GeoData Map es una aplicación que utiliza la biblioteca Leaflet para crear mapas interactivos con diversas funcionalidades:\n\n1. Mapas Interactivos Personalizados:\n   - Permitir a los usuarios interactuar con el mapa mediante pan y zoom.\n   - Ofrecer varias vistas de mapas base (callejero, satélite, terreno, etc.) para diferentes necesidades.\n\n2. Visualización de Datos Geoespaciales:\n   - Mostrar datos geoespaciales de manera visual y atractiva utilizando heatmaps.\n   - Personalizar los colores y la intensidad de los heatmaps para resaltar áreas de interés o densidad.\n\n3. Gestión de Marcadores:\n   - Añadir y gestionar marcadores en ubicaciones específicas con facilidad.\n   - Personalizar los iconos de los marcadores según las necesidades de la aplicación.\n   - Incluir popups y tooltips en los marcadores para proporcionar información adicional al usuario.\n\n4. Capas y Datos Superpuestos:\n   - Permitir la superposición de múltiples capas de datos para un análisis más detallado.\n   - Controlar la visibilidad de diferentes capas de datos según las preferencias del usuario.\n\n5. Geolocalización:\n   - Integrar la geolocalización para centrar el mapa en la ubicación actual del usuario.\n   - Ofrecer una funcionalidad de búsqueda para encontrar ubicaciones específicas en el mapa.\n\n6. Análisis y Filtrado de Datos:\n   - Permitir a los usuarios filtrar y analizar datos geoespaciales en tiempo real.\n   - Ofrecer herramientas de análisis avanzadas como la identificación de áreas de alta densidad o puntos críticos.\n\n7. Clústeres de Marcadores:\n   - Agrupar marcadores cercanos en clústeres para mejorar la claridad y el rendimiento del mapa.\n   - Personalizar los clústeres para que se adapten a la estética de la aplicación.\n\n8. Dibujar y Editar Capas Vectoriales:\n   - Proporcionar herramientas para dibujar y editar polígonos, líneas y otros elementos en el mapa.\n   - Ofrecer funcionalidad de edición interactiva para permitir a los usuarios ajustar elementos del mapa.\n\n9. Integración de Datos Externos:\n   - Importar datos geoespaciales de fuentes externas y mostrarlos en el mapa.\n   - Soporte para diversos formatos de datos como GeoJSON, CSV, etc.\n\n10. Personalización del Mapa:\n    - Ofrecer opciones de personalización como la configuración de la opacidad, el radio y el desenfoque de los puntos del heatmap.\n    - Personalizar la apariencia y el comportamiento del mapa según las preferencias del usuario.\n\n11. Compartir y Exportar:\n    - Permitir a los usuarios compartir mapas personalizados o exportar los datos visualizados.\n    - Generar enlaces o archivos que los usuarios pueden compartir con otros.\n\n12. Soporte Multidispositivo:\n    - Asegurar que la aplicación funcione de manera fluida en dispositivos móviles y de escritorio.\n    - Ofrecer una experiencia de usuario consistente en diferentes plataformas y tamaños de pantalla.",
+        "Image": "features.jpg",
         "Link": "https://www.google.com",
         "tag": "a",
         "LinkText": "Learn More",
-        "Button": "Click Me"
+        "Button": "Click Me",
+        "Component": ""
     },
     {
         "id": 3,
-        "Layout": "grid-3-cols",
-        "Title": "Section Three",
-        "Description": "This is the third section of the page.",
-        "Image": "https://via.placeholder.com/150",
+        "Layout": "sequential",
+        "Title": "Planes y suscripciones",
+        "Description": "Descubre nuestros planes de suscripción para GeoData Map y accede a funciones exclusivas que potenciarán tu experiencia de navegación y exploración geográfica. Desde la suscripción básica con funcionalidades esenciales hasta la suscripción empresarial con herramientas avanzadas para equipos y análisis geoespacial, tenemos la opción perfecta para cada necesidad. ¡Elige tu plan y comienza a explorar el mundo de manera inteligente y eficiente!",
+        "Image": "",
         "Link": "https://www.google.com",
         "tag": "a",
         "LinkText": "Learn More",
-        "Button": "Click Me"
+        "Button": "Click Me",
+        "Component": "OffersContainer"
     },
     {
         "id": 4,
         "Layout": "title-over-image",
-        "Title": "Section Four",
+        "Title": "Acerca de Nosotros",
         "Description": "This is the fourth section of the page.",
-        "Image": "https://via.placeholder.com/150",
+        "Image": "",
         "Link": "https://www.google.com",
         "tag": "a",
         "LinkText": "Learn More",
-        "Button": "Click Me"
+        "Button": "Click Me",
+        "Component": ""
     },
     {
         "id": 5,
         "Layout": "columnar",
-        "Title": "Section Five",
+        "Title": "Contactenos",
         "Description": "This is the fifth section of the page.",
-        "Image": "https://via.placeholder.com/150",
+        "Image": "",
         "Link": "https://www.google.com",
         "tag": "a",
         "LinkText": "Learn More",
-        "Button": "Click Me"
+        "Button": "Click Me",
+        "Component": ""
     }
 ]
