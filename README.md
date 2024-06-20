@@ -84,9 +84,9 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](./LICENS
 
 Si tienes alguna pregunta o sugerencia, no dudes en contactar al autor del proyecto:
 
-- **Nombre:** Tu Nombre
-- **Correo:** tu.correo@example.com
-- **GitHub:** [tu-usuario](https://github.com/tu-usuario)
+- **Nombre:** Victor Ardila
+- **Correo:** victoradila@gmail.com
+- **GitHub:** [tu-usuario](https://github.com/VictorArdila)
 
 ---
 
