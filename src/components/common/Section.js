@@ -241,7 +241,7 @@ function Section({ title, description, image, layout, component }) {
               flexDirection: "column",
               justifyContent: "center",
               margin: "0px 30px",
-              padding: "100px 0px",
+              padding: "150px 0px",
             }}
           >
             <h2 style={{ fontSize: "40px", margin: "0px" }}>{title}</h2>
