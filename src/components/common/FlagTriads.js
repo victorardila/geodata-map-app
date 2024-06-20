@@ -78,13 +78,13 @@ const FlagTriads = () => {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateRows: "1fr 4fr 3fr",
+                  gridTemplateRows: "1fr 5fr 3fr",
                   width: "100%",
                   height: "100%",
                 }}
               >
-                <h1 style={{ color: "white" }}>{flag.Title}</h1>
-                <p style={{ color: "white", alignSelf: "center", justifySelf:"center", textAlign: "justify", paddingLeft:"20px", paddingRight:"20px" }}>{flag.Description}</p>
+                <h1 style={{ color: "white", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>{flag.Title}</h1>
+                <p style={{ color: "white", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", fontSize: "16px", alignSelf: "center", justifySelf:"center", textAlign: "justify", paddingLeft:"20px", paddingRight:"20px", fontWeight:"500" }}>{flag.Description}</p>
                 <img src={images[flag.Image]} alt={flag.Title} style={{width:"80%", alignSelf: "center", justifySelf:"center"}} />
               </div>
             </div>

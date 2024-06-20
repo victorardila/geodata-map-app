@@ -22,7 +22,7 @@ const ButtonMenu = ({ text, type, color }) => {
       ? "black"
       : "white",
     backgroundImage: isHoveredButtonMenu
-      ? color==="transparent"?"linear-gradient(-45deg, #F22727, rgba(0,0,0,0.9))":"linear-gradient(-45deg, #89f7fe, rgba(255,255,255,0.9))"
+      ? color==="transparent"?"linear-gradient(-45deg, #F22727, rgba(0,0,0,0.9))":"linear-gradient(45deg, #fff7f7, #ffebeb, #ffdfdf, #ffd3d3, #ffc7c7, #ffbbbb, #ffafaf, #ffa3a3, #ff9797, #ff8b8b, #ff7f7f)"
       : "none",
     cursor: isHoveredButtonMenu ? "pointer" : "default",
   };
@@ -31,10 +31,10 @@ const ButtonMenu = ({ text, type, color }) => {
     fontSize: "20px",
     fontWeight: "bold",
     background: isHoveredButtonLogin
-      ? color==="transparent"?"linear-gradient(-25deg, #F22727 10%, rgba(0,0,0,0.9) 55%)":"linear-gradient(-45deg, #89f7fe, rgba(255,255,255,0.9))"
+      ? "linear-gradient(-25deg, #F22727 10%, rgba(0,0,0,0.9) 55%)"
       : "transparent",
     WebkitTextFillColor: isHoveredButtonLogin
-      ? color==="transparent"?"white":"black"
+      ? "white"
       : color === "transparent"
       ? "black"
       : "white",

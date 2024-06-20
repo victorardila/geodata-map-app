@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import YouTube from "react-youtube";
 
 const getStyle = (layout) => {
   switch (layout) {
@@ -121,7 +122,7 @@ const formatDescription = (description) => {
   return lines;
 };
 
-function Section({ title, description, image, layout, component }) {
+function Section({ title, description, image, layout, component, link }) {
   const gridStyle = getStyle(layout);
   const [firstHalf, secondHalf] = splitDescription(description);
   const [isHovered, setIsHovered] = useState(false);
@@ -138,8 +139,15 @@ function Section({ title, description, image, layout, component }) {
               alt="img"
               style={{ width: "auto", height: "-webkit-fill-available" }}
             />
-          ) : (
+          ) : component ? (
             <div style={{ width: "100%", height: "100%" }}>{component}</div>
+          ) : (
+            <div style={{ width: "60%", height: "60%" }}>
+              <YouTube
+                videoId={link}
+                opts={{ width: "100%", height: "100%" }}
+              />
+            </div>
           )}
         </>
       ) : layout === "sequential" ? (
@@ -160,8 +168,15 @@ function Section({ title, description, image, layout, component }) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               />
+            ) : component ? (
+              <div style={{ width: "100%", height: "100%" }}>{component}</div>
             ) : (
-              <div style={{ width: "80%", height: "100%" }}>{component}</div>
+              <div style={{ width: "60%", height: "60%" }}>
+                <YouTube
+                  videoId={link}
+                  opts={{ width: "100%", height: "100%" }}
+                />
+              </div>
             )
           }
           <div
@@ -178,7 +193,14 @@ function Section({ title, description, image, layout, component }) {
         </>
       ) : layout === "grid-2-cols" ? (
         <>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent:"center" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <h2>{title}</h2>
             {formatDescription(description)}
           </div>
@@ -198,8 +220,15 @@ function Section({ title, description, image, layout, component }) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               />
-            ) : (
+            ) : component ? (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
+            ) : (
+              <div style={{ display:"flex", width: "100%", height: "100%", alignItems: "center", justifyContent:"center" }}>
+                <YouTube
+                  videoId={link}
+                  iframeClassName="youtube-iframe"
+                />
+              </div>
             )
           }
         </>
@@ -230,8 +259,15 @@ function Section({ title, description, image, layout, component }) {
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 />
-              ) : (
+              ) : component ? (
                 <div style={{ width: "100%", height: "100%" }}>{component}</div>
+              ) : (
+                <div style={{ width: "60%", height: "60%" }}>
+                  <YouTube
+                    videoId={link}
+                    opts={{ width: "100%", height: "100%" }}
+                  />
+                </div>
               )
             }
           </div>
@@ -241,7 +277,6 @@ function Section({ title, description, image, layout, component }) {
               flexDirection: "column",
               justifyContent: "center",
               margin: "0px 30px",
-              padding: "150px 0px",
             }}
           >
             <h2 style={{ fontSize: "40px", margin: "0px" }}>{title}</h2>
@@ -345,8 +380,15 @@ function Section({ title, description, image, layout, component }) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               />
-            ) : (
+            ) : component ? (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
+            ) : (
+              <div style={{ width: "60%", height: "60%" }}>
+                <YouTube
+                  videoId={link}
+                  opts={{ width: "100%", height: "100%" }}
+                />
+              </div>
             )
           }
           {formatDescription(description)}
@@ -379,8 +421,15 @@ function Section({ title, description, image, layout, component }) {
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 />
-              ) : (
+              ) : component ? (
                 <div style={{ width: "100%", height: "100%" }}>{component}</div>
+              ) : (
+                <div style={{ width: "60%", height: "60%" }}>
+                  <YouTube
+                    videoId={link}
+                    opts={{ width: "100%", height: "100%" }}
+                  />
+                </div>
               )
             }
           </div>
@@ -416,8 +465,15 @@ function Section({ title, description, image, layout, component }) {
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 />
-              ) : (
+              ) : component ? (
                 <div style={{ width: "100%", height: "100%" }}>{component}</div>
+              ) : (
+                <div style={{ width: "60%", height: "60%" }}>
+                  <YouTube
+                    videoId={link}
+                    opts={{ width: "100%", height: "100%" }}
+                  />
+                </div>
               )
             }
           </div>
@@ -445,8 +501,15 @@ function Section({ title, description, image, layout, component }) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               />
-            ) : (
+            ) : component ? (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
+            ) : (
+              <div style={{ width: "60%", height: "60%" }}>
+                <YouTube
+                  videoId={link}
+                  opts={{ width: "100%", height: "100%" }}
+                />
+              </div>
             )
           }
           <div
@@ -474,19 +537,6 @@ function Section({ title, description, image, layout, component }) {
         <>
           <h2>{title}</h2>
           {formatDescription(description)}
-          <img
-            src={image}
-            alt="img"
-            style={{
-              width: isHovered ? "100%" : "90%",
-              transition: "width 0.3s ease",
-              boxShadow: isHovered
-                ? "0px 0px 10px 5px rgba(0,0,0,0.5)"
-                : "none",
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          />
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
             image ? (
@@ -495,8 +545,15 @@ function Section({ title, description, image, layout, component }) {
                 alt="img"
                 style={{ width: "auto", height: "-webkit-fill-available" }}
               />
-            ) : (
+            ) : component ? (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
+            ) : (
+              <div style={{ width: "60%", height: "60%" }}>
+                <YouTube
+                  videoId={link}
+                  opts={{ width: "100%", height: "100%" }}
+                />
+              </div>
             )
           }
         </>
@@ -522,8 +579,15 @@ function Section({ title, description, image, layout, component }) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               />
-            ) : (
+            ) : component ? (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
+            ) : (
+              <div style={{ width: "60%", height: "60%" }}>
+                <YouTube
+                  videoId={link}
+                  opts={{ width: "100%", height: "100%" }}
+                />
+              </div>
             )
           }
         </>
@@ -531,11 +595,6 @@ function Section({ title, description, image, layout, component }) {
         <>
           <h2>{title}</h2>
           {formatDescription(description)}
-          <img
-            src={image}
-            alt="img"
-            style={{ width: "auto", height: "-webkit-fill-available" }}
-          />
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
             image ? (
@@ -552,8 +611,15 @@ function Section({ title, description, image, layout, component }) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               />
-            ) : (
+            ) : component ? (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
+            ) : (
+              <div style={{ width: "60%", height: "60%" }}>
+                <YouTube
+                  videoId={link}
+                  opts={{ width: "100%", height: "100%" }}
+                />
+              </div>
             )
           }
         </>
