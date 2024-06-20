@@ -31,10 +31,10 @@ const ButtonMenu = ({ text, type, color }) => {
     fontSize: "20px",
     fontWeight: "bold",
     background: isHoveredButtonLogin
-      ? "linear-gradient(-25deg, #F22727 10%, rgba(0,0,0,0.9) 55%)"
+      ? color==="transparent"?"linear-gradient(-25deg, #F22727 10%, rgba(0,0,0,0.9) 55%)":"linear-gradient(-45deg, #89f7fe, rgba(255,255,255,0.9))"
       : "transparent",
     WebkitTextFillColor: isHoveredButtonLogin
-      ? "white"
+      ? color==="transparent"?"white":"black"
       : color === "transparent"
       ? "black"
       : "white",

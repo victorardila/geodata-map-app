@@ -1,0 +1,20 @@
+[
+    {
+        "Color": "linear-gradient(135deg, #3498db, #2ecc71)",
+        "Title": "Objetivo",
+        "Image":"mision.png",
+        "Description": "Facilitar la toma de decisiones estratégicas utilizando herramientas innovadoras basadas en datos geoespaciales."
+    },
+    {
+        "Color": "linear-gradient(135deg, #9b59b6, #e91e63)",
+        "Title": "Perspectiva",
+        "Image":"vision.png",
+        "Description": "Convertirnos en líderes reconocidos en el análisis y la visualización de datos geoespaciales, brindando soluciones que impulsen el desarrollo sostenible y la toma de decisiones informadas a nivel global."
+    },
+    {
+        "Color": "linear-gradient(135deg, #f1c40f, #f39c12)",
+        "Title": "Logros",
+        "Image":"logros.png",
+        "Description": "Durante nuestra trayectoria, hemos alcanzado importantes hitos que respaldan nuestro compromiso con la excelencia y la innovación. Entre nuestros logros destacan la implementación exitosa de soluciones geoespaciales a gran escala, la colaboración con organizaciones líderes a nivel mundial, y el reconocimiento por parte de la comunidad internacional por nuestro impacto positivo en el análisis y la visualización de datos."
+    }
+]

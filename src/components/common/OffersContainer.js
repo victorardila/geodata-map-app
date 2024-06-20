@@ -1,71 +1,8 @@
 import React, { useState } from "react";
+import Offers from '../../assets/data/Offers.json'
 
 const OffersContainer = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const offers = [
-    {
-      price: 100,
-      color: "linear-gradient(120deg, #90CCCA 0%, #66a6ff 100%)",
-      title: "Básico",
-      description: "Descripción de la oferta 1",
-      benefits: [
-        {
-          title: "Beneficio 1",
-          description: "Descripción del beneficio 1",
-        },
-        {
-          title: "Beneficio 2",
-          description: "Descripción del beneficio 2",
-        },
-        {
-          title: "Beneficio 3",
-          description: "Descripción del beneficio 3",
-        },
-      ],
-    },
-    {
-      price: 200,
-      color: "linear-gradient(135deg, rgba(63, 94, 251, 0.8) 0%, rgba(252, 70, 107, 0.8) 100%)",
-      title: "Premium",
-      description: "Descripción de la oferta 2",
-      benefits: [
-        {
-          title: "Beneficio 1",
-          description: "Descripción del beneficio 1",
-        },
-        {
-          title: "Beneficio 2",
-          description: "Descripción del beneficio 2",
-        },
-        {
-          title: "Beneficio 3",
-          description: "Descripción del beneficio 3",
-        },
-      ],
-    },
-    {
-      price: 300,
-      color: "linear-gradient(60deg,#ff6b6b 0%,#f8e71c 100%)",
-      title: "Empresarial",
-      description: "Descripción de la oferta 3",
-      benefits: [
-        {
-          title: "Beneficio 1",
-          description: "Descripción del beneficio 1",
-        },
-        {
-          title: "Beneficio 2",
-          description: "Descripción del beneficio 2",
-        },
-        {
-          title: "Beneficio 3",
-          description: "Descripción del beneficio 3",
-        },
-      ],
-    },
-  ];
-
   return (
     <div
       style={{
@@ -76,7 +13,7 @@ const OffersContainer = () => {
         height: "100%",
       }}
     >
-      {offers.map((offer, index) => (
+      {Offers.map((offer, index) => (
         <div
           key={index}
           style={{

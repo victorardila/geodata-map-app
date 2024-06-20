@@ -6,6 +6,7 @@ import "./ContentStyles.css";
 import presentationImage from '../../../assets/image/presentation.png'; // Importa la imagen
 import featuresImage from '../../../assets/image/features.jpg'; // Importa la imagen
 import OffertsContainer from "../../common/OffersContainer";
+import FlagTriads from "../../common/FlagTriads";
 
 const images = {
   "presentation.png": presentationImage,
@@ -14,6 +15,7 @@ const images = {
 
 const components = {
   "OffersContainer": <OffertsContainer />,
+  "FlagTriads": <FlagTriads />,
 };
 
 function Content() {

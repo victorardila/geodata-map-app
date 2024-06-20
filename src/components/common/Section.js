@@ -21,7 +21,7 @@ const getStyle = (layout) => {
     case "grid-2-cols":
       return {
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        gridTemplateColumns: "1fr 2fr",
         gap: "10px",
         height: "100vh",
         padding: "20px",
@@ -30,6 +30,14 @@ const getStyle = (layout) => {
       return {
         display: "grid",
         gridTemplateColumns: "2fr 1.2fr 1.2fr",
+        gap: "10px",
+        height: "100vh",
+        padding: "20px",
+      };
+    case "grid-2-cols-3rows":
+      return {
+        display: "grid",
+        gridTemplateRows: "1fr 5fr 5fr",
         gap: "10px",
         height: "100vh",
         padding: "20px",
@@ -170,6 +178,10 @@ function Section({ title, description, image, layout, component }) {
         </>
       ) : layout === "grid-2-cols" ? (
         <>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent:"center" }}>
+            <h2>{title}</h2>
+            {formatDescription(description)}
+          </div>
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
             image ? (
@@ -190,10 +202,6 @@ function Section({ title, description, image, layout, component }) {
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
             )
           }
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h2>{title}</h2>
-            {formatDescription(description)}
-          </div>
         </>
       ) : layout === "grid-3-cols" ? (
         <>
@@ -217,6 +225,7 @@ function Section({ title, description, image, layout, component }) {
                     boxShadow: isHovered
                       ? "0px 0px 10px 5px rgba(0,0,0,0.5)"
                       : "none",
+                    cursor: isHovered ? "pointer" : "default",
                   }}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
@@ -230,7 +239,6 @@ function Section({ title, description, image, layout, component }) {
             style={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
               justifyContent: "center",
               margin: "0px 30px",
               padding: "100px 0px",
@@ -243,12 +251,79 @@ function Section({ title, description, image, layout, component }) {
             style={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
               justifyContent: "center",
               margin: "0px 10px",
             }}
           >
             {formatDescription(secondHalf)}
+          </div>
+        </>
+      ) : layout === "grid-2-cols-3rows" ? (
+        <>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <h2>{title}</h2>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "50%",
+              }}
+            ></div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "50%",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "50%",
+              }}
+            ></div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "50%",
+              }}
+            ></div>
           </div>
         </>
       ) : layout === "title-over-image" ? (
@@ -360,9 +435,15 @@ function Section({ title, description, image, layout, component }) {
                   height: "100%",
                   backgroundAttachment: "fixed",
                   backgroundSize: "cover",
-                  imageRendering: "-webkit-optimize-contrast",
-                  imageResolution: "from-image",
+                  imageRendering: isHovered
+                    ? "pixelated"
+                    : "-webkit-optimize-contrast",
+                  imageResolution: isHovered ? "from-image" : "auto",
+                  transition: "image-rendering 0.3s ease",
+                  cursor: isHovered ? "pointer" : "default",
                 }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               />
             ) : (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>

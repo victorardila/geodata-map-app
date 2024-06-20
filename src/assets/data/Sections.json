@@ -3,7 +3,7 @@
         "id": 1,
         "Layout": "overlay",
         "Title": "GEODATA MAP",
-        "Description": "Software para la gestión y análisis de datos geográficos sobre un mapa interactivos.",
+        "Description": "Software para la gestión y análisis de datos geográficos sobre mapas interactivos.",
         "Image": "presentation.png",
         "Link": "https://www.google.com",
         "Tag": "a",
@@ -37,15 +37,15 @@
     },
     {
         "id": 4,
-        "Layout": "title-over-image",
+        "Layout": "grid-2-cols",
         "Title": "Acerca de Nosotros",
-        "Description": "This is the fourth section of the page.",
+        "Description": "En GeoData Map, nos dedicamos a proporcionar soluciones geoespaciales innovadoras que permiten a nuestros usuarios explorar y analizar datos geográficos de manera eficiente y efectiva. Nuestro equipo está compuesto por expertos apasionados por la tecnología y la geografía, trabajando juntos para hacer del mundo un lugar más conectado.",
         "Image": "",
-        "Link": "https://www.google.com",
+        "Link": "",
         "tag": "a",
         "LinkText": "Learn More",
         "Button": "Click Me",
-        "Component": ""
+        "Component": "FlagTriads"
     },
     {
         "id": 5,
