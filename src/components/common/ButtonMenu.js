@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ButtonMenu = ({ text, type, color }) => {
+const ButtonMenu = ({ text, type, color, path }) => {
   const [isHoveredButtonMenu, setIsHoveredButtonMenu] = useState(false);
   const [isHoveredButtonLogin, setIsHoveredButtonLogin] = useState(false);
 
@@ -81,6 +81,7 @@ const ButtonMenu = ({ text, type, color }) => {
         <button
           className="button-login"
           style={buttonLoginStyle}
+          onClick={() => window.location.replace(path)}
           onMouseEnter={() => setIsHoveredButtonLogin(true)}
           onMouseLeave={() => setIsHoveredButtonLogin(false)}
         >

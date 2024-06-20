@@ -28,7 +28,7 @@ const Header = ({backgroundHeader}) => {
         ))}
       </div>
       <div className="header-login">
-        <ButtonMenu text='Acceder' type='button-login' color={backgroundHeader} />
+        <ButtonMenu text='Acceder' type='button-login' path='/login' color={backgroundHeader} />
       </div>
     </div>
   )
