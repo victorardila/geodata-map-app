@@ -86,7 +86,7 @@ Si tienes alguna pregunta o sugerencia, no dudes en contactar al autor del proye
 
 - **Nombre:** Victor Ardila
 - **Correo:** victoradila@gmail.com
-- **GitHub:** [tu-usuario](https://github.com/VictorArdila)
+- **GitHub:** [Victor Ardila](https://github.com/VictorArdila)
 
 ---
 
