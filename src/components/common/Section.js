@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import YouTube from "react-youtube";
+import { motion } from "framer-motion";
 
 const getStyle = (layout) => {
   switch (layout) {
@@ -128,10 +129,19 @@ function Section({ id, title, description, image, layout, component, link }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div id={id} className="section" style={gridStyle}>
+    <motion.div
+      id={id}
+      className="section"
+      style={gridStyle}
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+    >
       {layout === "columnar" ? (
         <>
-          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+          <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+            {title}
+          </h2>
           {formatDescription(description)}
           {image ? (
             <img
@@ -187,7 +197,14 @@ function Section({ id, title, description, image, layout, component, link }) {
               alignItems: "center",
             }}
           >
-            <h2 style={{ fontSize: "40px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>{title}</h2>
+            <h2
+              style={{
+                fontSize: "40px",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              {title}
+            </h2>
             {formatDescription(description)}
           </div>
         </>
@@ -201,7 +218,9 @@ function Section({ id, title, description, image, layout, component, link }) {
               justifyContent: "center",
             }}
           >
-            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+            <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+              {title}
+            </h2>
             {formatDescription(description)}
           </div>
           {
@@ -223,11 +242,16 @@ function Section({ id, title, description, image, layout, component, link }) {
             ) : component ? (
               <div style={{ width: "100%", height: "100%" }}>{component}</div>
             ) : (
-              <div style={{ display:"flex", width: "100%", height: "100%", alignItems: "center", justifyContent:"center" }}>
-                <YouTube
-                  videoId={link}
-                  iframeClassName="youtube-iframe"
-                />
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "100%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <YouTube videoId={link} iframeClassName="youtube-iframe" />
               </div>
             )
           }
@@ -279,7 +303,15 @@ function Section({ id, title, description, image, layout, component, link }) {
               margin: "0px 30px",
             }}
           >
-            <h2 style={{ fontSize: "30px", margin: "0px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>{title}</h2>
+            <h2
+              style={{
+                fontSize: "30px",
+                margin: "0px",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              {title}
+            </h2>
             {formatDescription(firstHalf)}
           </div>
           <div
@@ -304,7 +336,9 @@ function Section({ id, title, description, image, layout, component, link }) {
               justifyContent: "center",
             }}
           >
-            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+            <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+              {title}
+            </h2>
           </div>
           <div
             style={{
@@ -363,7 +397,9 @@ function Section({ id, title, description, image, layout, component, link }) {
         </>
       ) : layout === "title-over-image" ? (
         <>
-          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+          <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+            {title}
+          </h2>
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
             image ? (
@@ -404,7 +440,9 @@ function Section({ id, title, description, image, layout, component, link }) {
               alignItems: "center",
             }}
           >
-            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+            <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+              {title}
+            </h2>
             {
               //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
               image ? (
@@ -448,7 +486,9 @@ function Section({ id, title, description, image, layout, component, link }) {
               justifyContent: "center",
             }}
           >
-            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+            <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+              {title}
+            </h2>
             {
               //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
               image ? (
@@ -520,7 +560,14 @@ function Section({ id, title, description, image, layout, component, link }) {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <h2 style={{ fontSize: "100px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>{title}</h2>
+            <h2
+              style={{
+                fontSize: "100px",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              {title}
+            </h2>
             <p
               style={{
                 fontSize: "40px",
@@ -535,7 +582,9 @@ function Section({ id, title, description, image, layout, component, link }) {
         </>
       ) : layout === "reverse-columnar" ? (
         <>
-          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+          <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+            {title}
+          </h2>
           {formatDescription(description)}
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
@@ -560,7 +609,9 @@ function Section({ id, title, description, image, layout, component, link }) {
       ) : layout === "reverse-sequential" ? (
         <>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+            <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+              {title}
+            </h2>
             {formatDescription(description)}
           </div>
           {
@@ -593,7 +644,9 @@ function Section({ id, title, description, image, layout, component, link }) {
         </>
       ) : (
         <>
-          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
+          <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+            {title}
+          </h2>
           {formatDescription(description)}
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
@@ -624,7 +677,7 @@ function Section({ id, title, description, image, layout, component, link }) {
           }
         </>
       )}
-    </div>
+    </motion.div>
   );
 }
 
