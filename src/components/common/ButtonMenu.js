@@ -30,7 +30,7 @@ const ButtonMenu = ({ text, type, color, route, onClick }) => {
       ? "black"
       : "white",
     backgroundImage: isHoveredButtonMenu
-      ? color==="transparent"?"linear-gradient(-45deg, #F22727, rgba(0,0,0,0.9))":"linear-gradient(45deg, #fff7f7, #ffebeb, #ffdfdf, #ffd3d3, #ffc7c7, #ffbbbb, #ffafaf, #ffa3a3, #ff9797, #ff8b8b, #ff7f7f)"
+      ? color==="transparent"?"linear-gradient(-45deg, #91CCCA, rgba(0,0,0,0.9))":"linear-gradient(-45deg, #fff7f7 40%, #91CCCA 60%)"
       : "none",
     cursor: isHoveredButtonMenu ? "pointer" : "default",
   };
@@ -39,7 +39,7 @@ const ButtonMenu = ({ text, type, color, route, onClick }) => {
     fontSize: "20px",
     fontWeight: "bold",
     background: isHoveredButtonLogin
-      ? "linear-gradient(-25deg, #F22727 10%, rgba(0,0,0,0.9) 55%)"
+      ? "linear-gradient(-25deg, #91CCCA 10%, rgba(0,0,0,0.9) 55%)"
       : "transparent",
     WebkitTextFillColor: isHoveredButtonLogin
       ? "white"

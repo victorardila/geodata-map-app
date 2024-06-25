@@ -24,7 +24,7 @@ function Layout() {
   }, []);
 
   return (
-    <div className="layout">
+    <div className="layout-landing">
       <Header backgroundHeader={headerBackground} />
       <div className="body">
         <Content/>

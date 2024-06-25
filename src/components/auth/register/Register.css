@@ -1,0 +1,9 @@
+.head-options{
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.head-options svg:hover{
+    cursor: pointer;
+}

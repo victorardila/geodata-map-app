@@ -8,7 +8,9 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage path="login" />} />
+        <Route path="/register" element={<LoginPage path="register" />} />
+        <Route path="/reset-password" element={<LoginPage path="reset-password" />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
