@@ -1,0 +1,80 @@
+{
+    "landing": {
+        "buttons": [
+            {
+                "id": 1,
+                "label": "Inicio"
+            },
+            {
+                "id": 2,
+                "label": "Funcionalidades"
+            },
+            {
+                "id": 3,
+                "label": "Demo"
+            },
+            {
+                "id": 4,
+                "label": "Suscripciones"
+            },
+            {
+                "id": 5,
+                "label": "Acerca"
+            }
+        ]
+    },
+    "login": {
+        "buttons": [
+            {
+                "label": "Iniciar Sesión",
+                "route": "/login"
+            },
+            {
+                "label": "Registrarse",
+                "route": "/register"
+            },
+            {
+                "label": "Recuperar Contraseña",
+                "route": "/recover"
+            }
+        ]
+    },
+    "dashboard": {
+        "buttons": [
+            {
+                "label": "Perfil",
+                "route": "/perfil"
+            },
+            {
+                "label": "Configuraciones",
+                "route": "/configuraciones"
+            }
+        ],
+        "submenu": {
+            "admin": {
+                "buttons": [
+                    {
+                        "label": "Usuarios",
+                        "route": "/admin/usuarios"
+                    },
+                    {
+                        "label": "Reportes",
+                        "route": "/admin/reportes"
+                    }
+                ]
+            },
+            "user": {
+                "buttons": [
+                    {
+                        "label": "Mi Cuenta",
+                        "route": "/user/cuenta"
+                    },
+                    {
+                        "label": "Mis Pedidos",
+                        "route": "/user/pedidos"
+                    }
+                ]
+            }
+        }
+    }
+}

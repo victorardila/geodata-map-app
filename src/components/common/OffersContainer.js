@@ -3,6 +3,10 @@ import Offers from '../../assets/data/Offers.json'
 
 const OffersContainer = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const handleClick = () => {
+    // Enviar al usurio al login
+    window.location.href = "/login";
+  }
   return (
     <div
       style={{
@@ -30,6 +34,7 @@ const OffersContainer = () => {
           }}
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
+          onClick={handleClick}
         >
           <div
             style={{

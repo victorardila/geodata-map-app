@@ -122,16 +122,16 @@ const formatDescription = (description) => {
   return lines;
 };
 
-function Section({ title, description, image, layout, component, link }) {
+function Section({ id, title, description, image, layout, component, link }) {
   const gridStyle = getStyle(layout);
   const [firstHalf, secondHalf] = splitDescription(description);
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="section" style={gridStyle}>
+    <div id={id} className="section" style={gridStyle}>
       {layout === "columnar" ? (
         <>
-          <h2>{title}</h2>
+          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
           {formatDescription(description)}
           {image ? (
             <img
@@ -187,7 +187,7 @@ function Section({ title, description, image, layout, component, link }) {
               alignItems: "center",
             }}
           >
-            <h2 style={{ fontSize: "40px" }}>{title}</h2>
+            <h2 style={{ fontSize: "40px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>{title}</h2>
             {formatDescription(description)}
           </div>
         </>
@@ -201,7 +201,7 @@ function Section({ title, description, image, layout, component, link }) {
               justifyContent: "center",
             }}
           >
-            <h2>{title}</h2>
+            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
             {formatDescription(description)}
           </div>
           {
@@ -279,7 +279,7 @@ function Section({ title, description, image, layout, component, link }) {
               margin: "0px 30px",
             }}
           >
-            <h2 style={{ fontSize: "40px", margin: "0px" }}>{title}</h2>
+            <h2 style={{ fontSize: "30px", margin: "0px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>{title}</h2>
             {formatDescription(firstHalf)}
           </div>
           <div
@@ -304,7 +304,7 @@ function Section({ title, description, image, layout, component, link }) {
               justifyContent: "center",
             }}
           >
-            <h2>{title}</h2>
+            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
           </div>
           <div
             style={{
@@ -363,7 +363,7 @@ function Section({ title, description, image, layout, component, link }) {
         </>
       ) : layout === "title-over-image" ? (
         <>
-          <h2>{title}</h2>
+          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
             image ? (
@@ -404,7 +404,7 @@ function Section({ title, description, image, layout, component, link }) {
               alignItems: "center",
             }}
           >
-            <h2>{title}</h2>
+            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
             {
               //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
               image ? (
@@ -448,7 +448,7 @@ function Section({ title, description, image, layout, component, link }) {
               justifyContent: "center",
             }}
           >
-            <h2>{title}</h2>
+            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
             {
               //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
               image ? (
@@ -520,7 +520,7 @@ function Section({ title, description, image, layout, component, link }) {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <h2 style={{ fontSize: "100px" }}>{title}</h2>
+            <h2 style={{ fontSize: "100px", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>{title}</h2>
             <p
               style={{
                 fontSize: "40px",
@@ -535,7 +535,7 @@ function Section({ title, description, image, layout, component, link }) {
         </>
       ) : layout === "reverse-columnar" ? (
         <>
-          <h2>{title}</h2>
+          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
           {formatDescription(description)}
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente
@@ -560,7 +560,7 @@ function Section({ title, description, image, layout, component, link }) {
       ) : layout === "reverse-sequential" ? (
         <>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <h2>{title}</h2>
+            <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
             {formatDescription(description)}
           </div>
           {
@@ -593,7 +593,7 @@ function Section({ title, description, image, layout, component, link }) {
         </>
       ) : (
         <>
-          <h2>{title}</h2>
+          <h2 style={{textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"}}>{title}</h2>
           {formatDescription(description)}
           {
             //Si imagen es diferente de null, entonces se muestra la imagen sino renderiza el componente

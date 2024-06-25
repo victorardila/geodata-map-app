@@ -23,6 +23,7 @@ function Content() {
     <div className="content">
       {sectionsData.map((section, index) => (
         <Section
+          id={section.id}
           key={index}
           title={section.Title}
           description={section.Description}

@@ -43,7 +43,7 @@ const Credits = () => {
           </a>
           <h3>Send a message</h3>
         </div>
-        <input type="text" placeholder="Type your name here" style={{
+        <input type="text" placeholder="Enter your name here" style={{
           width: "200px",
           height: "30px",
           borderRadius: "10px",
@@ -52,7 +52,7 @@ const Credits = () => {
           padding: "0 2px",
           fontSize: "16px"
         }} />
-        <input type="text" placeholder="Type your message here" style={{
+        <input type="text" placeholder="Enter your message here" style={{
           width: "200px",
           height: "60px",
           borderRadius: "10px",

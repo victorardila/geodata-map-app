@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 
-const ButtonMenu = ({ text, type, color, path }) => {
+const ButtonMenu = ({ text, type, color, route, onClick }) => {
   const [isHoveredButtonMenu, setIsHoveredButtonMenu] = useState(false);
   const [isHoveredButtonLogin, setIsHoveredButtonLogin] = useState(false);
+
+  const handleClick = () => {
+    if (route) {
+      window.location.href = route;
+    }else{
+      onClick();
+    }
+  };
 
   const buttonMenuStyle = {
     fontSize: "20px",
@@ -71,6 +79,7 @@ const ButtonMenu = ({ text, type, color, path }) => {
           <button
             className="button-menu"
             style={buttonMenuStyle}
+            onClick={handleClick}
             onMouseEnter={() => setIsHoveredButtonMenu(true)}
             onMouseLeave={() => setIsHoveredButtonMenu(false)}
           >
@@ -81,7 +90,7 @@ const ButtonMenu = ({ text, type, color, path }) => {
         <button
           className="button-login"
           style={buttonLoginStyle}
-          onClick={() => window.location.replace(path)}
+          onClick={handleClick}
           onMouseEnter={() => setIsHoveredButtonLogin(true)}
           onMouseLeave={() => setIsHoveredButtonLogin(false)}
         >
