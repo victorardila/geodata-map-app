@@ -60,8 +60,8 @@ Los datos sobre la calidad del aire son proporcionados por fuentes confiables y 
 
 ## 📷 Capturas de Pantalla
 
-![Mapa Interactivo](./screenshots/mapa_interactivo.png)
-*Vista del mapa interactivo mostrando la calidad del aire en diferentes regiones de Colombia.*
+![Login](https://github.com/Valfonsoardila10/Geodata-map-app/assets/106699036/41009eb6-b7c7-4ab8-9e8d-bd1a2394de64)
+*Vista del login de la app*
 
 ![Mapa de Calor](./screenshots/mapa_calor.png)
 *Mapa de calor que visualiza la concentración de contaminantes del aire.*
