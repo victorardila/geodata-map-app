@@ -1,7 +1,7 @@
 import React from 'react'
 import { Marker } from "react-leaflet";
 import IconLocation from './IconLocation';
-import Positions from '../../../../assets/data/Positions.json';
+import Positions from '../../../assets/data/Positions.json';
 
 const Markers = ({checkNodes}) => {
     return(

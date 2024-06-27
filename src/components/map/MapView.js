@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./MapView.css";
-import { useGlobalState } from "../../../hooks/GlobalStateContext";
+import { useGlobalState } from "../../hooks/GlobalStateContext";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import Markers from "./markers/Markers";
 import CurrentMarker from "./current-loctaion-marker/CurrentMarker";
@@ -12,7 +12,7 @@ import { faMapMarked } from "@fortawesome/free-solid-svg-icons";
 import "leaflet-routing-machine";
 import "leaflet-control-custom"; // Asegúrate de tener el archivo Awns.json en la misma ubicación que tu componente
 import { motion } from "framer-motion";
-import Position from "../../../assets/data/Positions.json";
+import Position from "../../assets/data/Positions.json";
 
 const MapView = () => {
   const { state } = useGlobalState();

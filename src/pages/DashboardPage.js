@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/app/Layout";
-import MapView from "../components/app/map/MapView";
+import MapView from "../components/map/MapView";
 
 function Dashboard({ path }) {
   return (
