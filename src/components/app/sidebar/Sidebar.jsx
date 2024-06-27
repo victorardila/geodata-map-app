@@ -8,6 +8,9 @@ import {
   faHome,
   faDatabase,
   faMap,
+  faRobot,
+  faSignOutAlt,
+  faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
 
@@ -20,6 +23,9 @@ const Sidebar = () => {
     faHome: faHome,
     faDatabase: faDatabase,
     faMap: faMap,
+    faRobot: faRobot,
+    faCircleInfo: faCircleInfo,
+    faSignOutAlt: faSignOutAlt,
   };
 
   const handleSubMenu = (index) => {

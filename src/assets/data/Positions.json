@@ -1,0 +1,162 @@
+{
+    "Bogotá": {
+        "numero": 1,
+        "lat": 4.60971,
+        "lon": -74.08175
+    },
+    "Popayán": {
+        "numero": 2,
+        "lat": 2.44444,
+        "lon": -76.61389
+    },
+    "Medellín": {
+        "numero": 3,
+        "lat": 6.25184,
+        "lon": -75.56359
+    },
+    "Cali": {
+        "numero": 4,
+        "lat": 3.43722,
+        "lon": -76.5225
+    },
+    "Barranquilla": {
+        "numero": 5,
+        "lat": 10.96854,
+        "lon": -74.78132
+    },
+    "Cartagena": {
+        "numero": 6,
+        "lat": 10.39972,
+        "lon": -75.51444
+    },
+    "Santa Marta": {
+        "numero": 7,
+        "lat": 11.24079,
+        "lon": -74.19904
+    },
+    "Bucaramanga": {
+        "numero": 8,
+        "lat": 7.12539,
+        "lon": -73.1198
+    },
+    "Manizales": {
+        "numero": 9,
+        "lat": 5.06889,
+        "lon": -75.51738
+    },
+    "Pereira": {
+        "numero": 10,
+        "lat": 4.81333,
+        "lon": -75.69611
+    },
+    "Armenia": {
+        "numero": 11,
+        "lat": 4.53389,
+        "lon": -75.68111
+    },
+    "Ibagué": {
+        "numero": 12,
+        "lat": 4.43889,
+        "lon": -75.23222
+    },
+    "Neiva": {
+        "numero": 13,
+        "lat": 2.9273,
+        "lon": -75.28188
+    },
+    "Villavicencio": {
+        "numero": 14,
+        "lat": 4.15328,
+        "lon": -73.63508
+    },
+    "Pasto": {
+        "numero": 15,
+        "lat": 1.21361,
+        "lon": -77.28111
+    },
+    "Tunja": {
+        "numero": 16,
+        "lat": 5.53528,
+        "lon": -73.36778
+    },
+    "Riohacha": {
+        "numero": 17,
+        "lat": 11.5442,
+        "lon": -72.9069
+    },
+    "Valledupar": {
+        "numero": 18,
+        "lat": 10.46314,
+        "lon": -73.25322
+    },
+    "Quibdó": {
+        "numero": 19,
+        "lat": 5.69489,
+        "lon": -76.66129
+    },
+    "Montería": {
+        "numero": 20,
+        "lat": 8.75754,
+        "lon": -75.88987
+    },
+    "Sincelejo": {
+        "numero": 21,
+        "lat": 9.30472,
+        "lon": -75.39778
+    },
+    "Yopal": {
+        "numero": 22,
+        "lat": 5.33775,
+        "lon": -72.39586
+    },
+    "Mocoa": {
+        "numero": 23,
+        "lat": 1.15278,
+        "lon": -76.64694
+    },
+    "Puerto Carreño": {
+        "numero": 24,
+        "lat": 6.18903,
+        "lon": -67.48512
+    },
+    "San José del Guaviare": {
+        "numero": 25,
+        "lat": 2.57278,
+        "lon": -72.64222
+    },
+    "Cúcuta": {
+        "numero": 26,
+        "lat": 7.89391,
+        "lon": -72.50782
+    },
+    "Leticia": {
+        "numero": 27,
+        "lat": -4.21528,
+        "lon": -69.94056
+    },
+    "Arauca": {
+        "numero": 28,
+        "lat": 7.08471,
+        "lon": -70.75598
+    },
+    "Inírida": {
+        "numero": 29,
+        "lat": 3.86528,
+        "lon": -67.92389
+    },
+    "San Andrés": {
+        "numero": 30,
+        "lat": 12.58472,
+        "lon": -81.70056
+    },
+    "Mitú": {
+        "numero": 31,
+        "lat": 1.19833,
+        "lon": -70.17389
+    },
+    "Florencia": {
+        "numero": 32,
+        "lat": 1.6139,
+        "lon": -75.6128
+    }
+}

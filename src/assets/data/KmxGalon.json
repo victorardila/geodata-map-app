@@ -1,0 +1,22 @@
+{
+    "Avión": {
+        "unidad": "1km",
+        "galon": 3,
+        "precio": 42000
+    },
+    "Carro": {
+        "unidad": "1km",
+        "galon": 0.025,
+        "precio": 350
+    },
+    "Moto": {
+        "unidad": "1km",
+        "galon": 0.013,
+        "precio": 182
+    },
+    "Bus": {
+        "unidad": "1km",
+        "galon": 0.125,
+        "precio": 1750
+    }
+}

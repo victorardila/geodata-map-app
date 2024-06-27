@@ -69,6 +69,21 @@
                         "route": "/settings-map"
                     }
                 ]
+            },
+            {
+                "icon": "faRobot",
+                "label": "Predicciones con IA",
+                "route": "/predictions"
+            },
+            {
+                "icon": "faCircleInfo",
+                "label": "Ayuda",
+                "route": "/help"
+            },
+            {
+                "icon": "faSignOutAlt",
+                "label": "Cerrar Sesión",
+                "route": "/logout"
             }
         ]
     }
