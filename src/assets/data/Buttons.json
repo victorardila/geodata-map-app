@@ -58,15 +58,15 @@
                 "submenu": [
                     {
                         "label": "Visualizar Mapa",
-                        "route": "/mapa1"
+                        "route": "/mapa"
                     },
                     {
-                        "label": "Mapa 2",
-                        "route": "/mapa2"
+                        "label": "Capturas",
+                        "route": "/caps"
                     },
                     {
-                        "label": "Mapa 3",
-                        "route": "/mapa3"
+                        "label": "Ajustes de Mapa",
+                        "route": "/settings-map"
                     }
                 ]
             }
