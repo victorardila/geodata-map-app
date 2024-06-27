@@ -63,6 +63,9 @@ Los datos sobre la calidad del aire son proporcionados por fuentes confiables y 
 ![Login](https://github.com/Valfonsoardila10/Geodata-map-app/assets/106699036/41009eb6-b7c7-4ab8-9e8d-bd1a2394de64)
 *Vista del login de la app*
 
+![Dashboard](https://github.com/Valfonsoardila10/Geodata-map-app/assets/106699036/f3ed748d-aba6-4405-b941-990ab085b1c4)
+*Dashboard del proyecto para gestionar los datos*
+
 ![Mapa de Calor](./screenshots/mapa_calor.png)
 *Mapa de calor que visualiza la concentración de contaminantes del aire.*
 
