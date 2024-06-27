@@ -36,6 +36,10 @@ const Sidebar = () => {
     }
   };
 
+  const handleLogout = () => {
+    window.location.href = "/login";
+  };
+
   return (
     <div
       className="sidebar"
@@ -130,6 +134,12 @@ const Sidebar = () => {
                 <div
                   className="sidebar-button"
                   style={{ height: "5%", justifyContent: "space-between" }}
+                  onClick={() => {
+                    if (button.route.includes("logout")) {
+                      handleLogout();
+                    }
+                  }
+                  }
                 >
                   <button style={{ height: "100%" }}>
                     <span
