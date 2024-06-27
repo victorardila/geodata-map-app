@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRoad } from "@fortawesome/free-solid-svg-icons";
-import KmxGalon from "../../../assets/data/KmxGalon.json";
+import KmxGalon from "../../../../assets/data/KmxGalon.json";
 import "./CalculationView.css";
 
 const CalculationView = ({ distance, time, route, graph, cost }) => {

@@ -12,6 +12,7 @@ function AppRoutes() {
         <Route path="/register" element={<LoginPage path="register" />} />
         <Route path="/reset-password" element={<LoginPage path="reset-password" />} />
         <Route path="/dashboard" element={<DashboardPage path="dashboard" />} />
+        <Route path="/dashboard/map" element={<DashboardPage path="dashboard/map" />} />
       </Routes>
     </BrowserRouter>
   );

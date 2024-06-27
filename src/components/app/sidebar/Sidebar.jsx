@@ -123,7 +123,7 @@ const Sidebar = () => {
                   >
                     {isSidebarOpen &&
                       button.submenu.map((subButton, subIndex) => (
-                        <button key={`${index}-${subIndex}`}>
+                        <button key={`${index}-${subIndex}`} onClick={() => window.location.href=subButton.route}>
                           {subButton.label}
                         </button>
                       ))}

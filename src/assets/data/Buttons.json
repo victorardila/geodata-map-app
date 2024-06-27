@@ -44,29 +44,29 @@
             {
                 "icon": "faHome",
                 "label": "Inicio",
-                "route": "/dashboard"
+                "route": "/dashboard/home"
             },
             {
                 "icon": "faDatabase",
                 "label": "DataTrament",
-                "route": "/datatrament"
+                "route": "/dashboard/datatrament"
             },
             {
                 "icon": "faMap",
                 "label": "Mapa interactivo",
-                "route": "/mapa",
+                "route": "",
                 "submenu": [
                     {
                         "label": "Visualizar Mapa",
-                        "route": "/mapa"
+                        "route": "/dashboard/map"
                     },
                     {
                         "label": "Capturas",
-                        "route": "/caps"
+                        "route": "/dashboard/caps"
                     },
                     {
                         "label": "Ajustes de Mapa",
-                        "route": "/settings-map"
+                        "route": "/dashboard/settings-map"
                     }
                 ]
             },

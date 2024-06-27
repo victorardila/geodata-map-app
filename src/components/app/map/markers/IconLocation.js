@@ -1,9 +1,10 @@
-import { resources } from "../../../assets/resources";
+import PointLocation from "../../../../assets/icon/point_location.png";
+import ShadowIcon from "../../../../assets/icon/current_location_shadow.png";
 import L  from "leaflet";
 
 const IconLocation = L.icon({
-    iconUrl: resources.pointLocation,
-    shadowUrl: resources.shadowIcon,
+    iconUrl: PointLocation,
+    shadowUrl: ShadowIcon,
     iconSize: [30, 30],
     shadowSize: [30, 30],
     iconAnchor: [15, 30],
