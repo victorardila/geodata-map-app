@@ -1,0 +1,59 @@
+.header-state-app {
+  display: flex;
+  height: 6%;
+  width: -webkit-fill-available;
+  justify-content: center;
+  align-items: center;
+}
+.header-state-card {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  width: 98%;
+  height: 90%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+.layout-header-state {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+}
+.header-logo-state {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+  height: 100%;
+}
+.header-logo-state img {
+  height: 40px;
+}
+.header-title-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.header-cog-state {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.header-cog-state svg{
+  height: 25px;
+  width: 25px;
+  margin-right: 12px;
+}
+.header-cog-state svg:hover{
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}

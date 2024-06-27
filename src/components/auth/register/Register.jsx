@@ -10,6 +10,12 @@ const Register = () => {
   const handleClick = () => {
     window.location.href = "/login";
   }
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+  }
   
   return (
     <motion.div
@@ -42,7 +48,7 @@ const Register = () => {
               placeholder="Password"
             />
           </div>
-          <button type="submit">Register</button>
+          <button type="submit" onClick={handleRegister}>Register</button>
         </form>
       </div>
     </motion.div>

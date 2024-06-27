@@ -42,39 +42,34 @@
     "dashboard": {
         "buttons": [
             {
-                "label": "Perfil",
-                "route": "/perfil"
+                "icon": "faHome",
+                "label": "Inicio",
+                "route": "/dashboard"
             },
             {
-                "label": "Configuraciones",
-                "route": "/configuraciones"
-            }
-        ],
-        "submenu": {
-            "admin": {
-                "buttons": [
-                    {
-                        "label": "Usuarios",
-                        "route": "/admin/usuarios"
-                    },
-                    {
-                        "label": "Reportes",
-                        "route": "/admin/reportes"
-                    }
-                ]
+                "icon": "faDatabase",
+                "label": "DataTrament",
+                "route": "/datatrament"
             },
-            "user": {
-                "buttons": [
+            {
+                "icon": "faMap",
+                "label": "Mapa interactivo",
+                "route": "/mapa",
+                "submenu": [
                     {
-                        "label": "Mi Cuenta",
-                        "route": "/user/cuenta"
+                        "label": "Visualizar Mapa",
+                        "route": "/mapa1"
                     },
                     {
-                        "label": "Mis Pedidos",
-                        "route": "/user/pedidos"
+                        "label": "Mapa 2",
+                        "route": "/mapa2"
+                    },
+                    {
+                        "label": "Mapa 3",
+                        "route": "/mapa3"
                     }
                 ]
             }
-        }
+        ]
     }
 }

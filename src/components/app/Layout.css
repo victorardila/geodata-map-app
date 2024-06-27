@@ -1,0 +1,35 @@
+.layout-app {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #9dd3fc 10%, #b6dcf2 40%, #a5d8ff 70%);
+  height: 100vh;
+  width: 100vw;
+}
+.layout-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: -webkit-fill-available;
+  justify-content: center;
+  align-items: center;
+}
+.content-wrapper{
+  display: flex;
+  width: -webkit-fill-available;
+  height: 94%;
+  justify-content: center;
+  align-items: center;
+}
+.content-wrapper-card{
+  display: flex;
+  background: linear-gradient(-45deg, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.9) 70%);
+  width: 98%;
+  height: 98%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}

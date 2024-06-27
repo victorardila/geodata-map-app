@@ -9,6 +9,13 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+  }
+  
   const socialMediaBarIcons = [
     { icon: faFacebook, color: "#3b5998", name: "facebook" },
     { icon: faGithub, color: "#333", name: "github" },
@@ -31,7 +38,9 @@ const Login = () => {
             <input type="password" id="password" name="password" placeholder='Password' />
             <p>Forgot your password? <a href="/reset-password">Reset it</a></p>
           </div>
-          <button type="submit">Login</button>
+          <button type="submit"
+          onClick={handleLogin}
+          >Login</button>
         </form>
       </div>
       <div className='options'>

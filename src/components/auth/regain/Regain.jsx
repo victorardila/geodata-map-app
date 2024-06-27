@@ -6,9 +6,14 @@ import { motion } from "framer-motion";
 import "./Regain.css";
 
 const Regain = () => {
+
   const handleClick = () => {
     window.location.href = "/login";
   };
+  const handleRegain = (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+  }
   return (
     <motion.div
       className="container"
@@ -34,7 +39,7 @@ const Regain = () => {
           <div className="form-group">
             <input type="email" id="email" name="email" placeholder="Email" />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={handleRegain}>Submit</button>
         </form>
       </div>
     </motion.div>
