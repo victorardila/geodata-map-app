@@ -63,6 +63,10 @@
                     },
                     {
                         "type":"checkbox",
+                        "label": "Barra de Busqueda"
+                    },
+                    {
+                        "type":"checkbox",
                         "label": "Capturas"
                     },
                     {

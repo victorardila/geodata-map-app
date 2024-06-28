@@ -18,7 +18,7 @@ const Sidebar = () => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const buttonMenu = ButtonMenu.dashboard.buttons;
-  
+
   // Initialize checkboxStates with false for each checkbox
   const initialCheckboxStates = buttonMenu.reduce((acc, button, index) => {
     if (button.submenu) {
@@ -85,7 +85,6 @@ const Sidebar = () => {
           {buttonMenu.map((button, index) => (
             <React.Fragment key={index}>
               {button.submenu ? (
-                // Si el botón tiene submenu
                 <div
                   className="sidebar-button"
                   style={{
@@ -154,7 +153,6 @@ const Sidebar = () => {
                               {subButton.label}
                             </button>
                           ) : (
-                            // Checkbox con estado individual
                             <button
                               onClick={() =>
                                 handleCheckboxChange(`${index}-${subIndex}`)
@@ -167,7 +165,7 @@ const Sidebar = () => {
                               <input
                                 type="checkbox"
                                 checked={
-                                  checkboxStates[`${index}-${subIndex}`]
+                                  checkboxStates[`${index}-${subIndex}`] || false
                                 }
                                 style={{ width: "20px", height: "20px" }}
                                 onChange={() =>
@@ -185,7 +183,6 @@ const Sidebar = () => {
                   </div>
                 </div>
               ) : (
-                // Si el botón no tiene submenu
                 <div
                   className="sidebar-button"
                   style={{ height: "5%", justifyContent: "space-between" }}
