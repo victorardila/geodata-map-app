@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../../../assets/icon/icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog } from "@fortawesome/free-solid-svg-icons";
-import "./Header.css";
+import "./Header.style.css";
 
 const Header = ({path}) => {
   return (

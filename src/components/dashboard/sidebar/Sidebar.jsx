@@ -12,7 +12,7 @@ import {
   faSignOutAlt,
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
-import "./Sidebar.css";
+import "./Sidebar.style.css";
 
 const Sidebar = () => {
   const [openSubMenu, setOpenSubMenu] = useState(null);

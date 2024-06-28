@@ -1,5 +1,5 @@
 import React from 'react'
-import './FooterStyles.css'
+import './Footer.style.css'
 import SocialMediaBar from '../../common/SocialMediaBar'
 import Credits from '../../common/Credits'
 

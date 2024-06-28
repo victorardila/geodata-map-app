@@ -1,8 +1,11 @@
 import React from "react";
 import Map from "../../assets/image/background.png";
-import "./Layout.css";
+import Login from "./login/Login";
+import Register from "./register/Register";
+import Regain from "./regain/Regain";
+import "./LoginLayout.style.css";
 
-const Layout = ({ path, children }) => {
+const LoginLayout = ({ path, children }) => {
   return (
     <div
       className="layout-login"
@@ -21,11 +24,16 @@ const Layout = ({ path, children }) => {
           className="layout-login-content"
           style={{ width: path !== "login" && path !== null ? "60%" : "30%" }}
         >
-          {children}
+          <Login />
+          {path === "register" ? (
+            <Register />
+          ) : path === "reset-password" ? (
+            <Regain />
+          ) : null}
         </div>
       </div>
     </div>
   );
 };
 
-export default Layout;
+export default LoginLayout;

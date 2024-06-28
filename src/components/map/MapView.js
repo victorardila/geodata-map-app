@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./MapView.css";
+import "./MapView.style.css";
 import { useGlobalState } from "../../hooks/GlobalStateContext";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import Markers from "./markers/Markers";

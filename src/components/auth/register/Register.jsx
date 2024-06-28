@@ -3,7 +3,7 @@ import User from "../../../assets/image/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
-import "./Register.css";
+import "./Register.style.css";
 
 const Register = () => {
 

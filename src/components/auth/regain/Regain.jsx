@@ -3,7 +3,7 @@ import Forgot from "../../../assets/image/forgot.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
-import "./Regain.css";
+import "./Regain.style.css";
 
 const Regain = () => {
 

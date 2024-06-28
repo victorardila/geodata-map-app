@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import './LayoutStyles.css';
+import './LandingLayout.style.css'
 import Header from './header/Header';
 import Content from './content/Content';
 
-function Layout() {
+function LandingLayout() {
   const [headerBackground, setHeaderBackground] = useState("transparent");
 
   useEffect(() => {
@@ -33,4 +33,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default LandingLayout;

@@ -1,5 +1,5 @@
 import React from "react";
-import "./HeaderStyles.css";
+import "./Header.style.css";
 import ButtonMenu from "../../common/ButtonMenu";
 import LogoTitle from "../../common/LogoTitle";
 import SpaceDivider from "../../common/SpaceDivider";

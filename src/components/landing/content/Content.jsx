@@ -2,7 +2,7 @@ import React from "react";
 import Section from "../../common/Section";
 import sectionsData from "../../../assets/data/Sections.json";
 import Footer from "../footer/Footer";
-import "./ContentStyles.css";
+import "./Content.style.css";
 import presentationImage from '../../../assets/image/presentation.png'; // Importa la imagen
 import featuresImage from '../../../assets/image/features.jpg'; // Importa la imagen
 import OffertsContainer from "../../common/OffersContainer";
