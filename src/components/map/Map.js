@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./MapView.style.css";
+import "./Map.style.css";
 import { useGlobalState } from "../../hooks/GlobalStateContext";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import Markers from "./markers/Markers";
@@ -50,6 +50,7 @@ const MapView = () => {
       });
     }
   }, []);
+  
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}

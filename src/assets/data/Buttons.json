@@ -42,8 +42,8 @@
     "dashboard": {
         "buttons": [
             {
-                "icon": "faHome",
-                "label": "Inicio",
+                "icon": "faChartLine",
+                "label": "Resumen",
                 "route": "/dashboard/home"
             },
             {
@@ -57,16 +57,17 @@
                 "route": "",
                 "submenu": [
                     {
+                        "type":"button",
                         "label": "Visualizar Mapa",
                         "route": "/dashboard/map"
                     },
                     {
-                        "label": "Capturas",
-                        "route": "/dashboard/caps"
+                        "type":"checkbox",
+                        "label": "Capturas"
                     },
                     {
-                        "label": "Ajustes de Mapa",
-                        "route": "/dashboard/settings-map"
+                        "type":"checkbox",
+                        "label": "Ajustes de Mapa"
                     }
                 ]
             },

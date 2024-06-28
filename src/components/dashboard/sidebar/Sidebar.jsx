@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretDown,
   faCaretUp,
-  faHome,
+  faChartLine,
   faDatabase,
   faMap,
   faRobot,
@@ -18,14 +18,35 @@ const Sidebar = () => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const buttonMenu = ButtonMenu.dashboard.buttons;
+  
+  // Initialize checkboxStates with false for each checkbox
+  const initialCheckboxStates = buttonMenu.reduce((acc, button, index) => {
+    if (button.submenu) {
+      button.submenu.forEach((subButton, subIndex) => {
+        if (subButton.type === "checkbox") {
+          acc[`${index}-${subIndex}`] = false;
+        }
+      });
+    }
+    return acc;
+  }, {});
+
+  const [checkboxStates, setCheckboxStates] = useState(initialCheckboxStates);
 
   const icons = {
-    faHome: faHome,
+    faChartLine: faChartLine,
     faDatabase: faDatabase,
     faMap: faMap,
     faRobot: faRobot,
     faCircleInfo: faCircleInfo,
     faSignOutAlt: faSignOutAlt,
+  };
+
+  const handleCheckboxChange = (key) => {
+    setCheckboxStates((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key], // Toggle the checkbox state
+    }));
   };
 
   const handleSubMenu = (index) => {
@@ -123,9 +144,43 @@ const Sidebar = () => {
                   >
                     {isSidebarOpen &&
                       button.submenu.map((subButton, subIndex) => (
-                        <button key={`${index}-${subIndex}`} onClick={() => window.location.href=subButton.route}>
-                          {subButton.label}
-                        </button>
+                        <React.Fragment key={`${index}-${subIndex}`}>
+                          {subButton.type === "button" ? (
+                            <button
+                              onClick={() =>
+                                (window.location.href = subButton.route)
+                              }
+                            >
+                              {subButton.label}
+                            </button>
+                          ) : (
+                            // Checkbox con estado individual
+                            <button
+                              onClick={() =>
+                                handleCheckboxChange(`${index}-${subIndex}`)
+                              }
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                              }}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={
+                                  checkboxStates[`${index}-${subIndex}`]
+                                }
+                                style={{ width: "20px", height: "20px" }}
+                                onChange={() =>
+                                  handleCheckboxChange(`${index}-${subIndex}`)
+                                }
+                              />
+                              <span>{subButton.label}</span>
+                              <span style={{ width: "20px" }}>
+                                {subButton.info}
+                              </span>
+                            </button>
+                          )}
+                        </React.Fragment>
                       ))}
                   </div>
                 </div>
@@ -138,8 +193,7 @@ const Sidebar = () => {
                     if (button.route.includes("logout")) {
                       handleLogout();
                     }
-                  }
-                  }
+                  }}
                 >
                   <button style={{ height: "100%" }}>
                     <span
