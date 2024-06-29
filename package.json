@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "framer-motion": "^11.2.10",
+    "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
     "leaflet-control-custom": "^1.0.0",
     "leaflet-routing-machine": "^3.2.12",
@@ -19,7 +20,9 @@
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.30.2",
     "react-youtube": "^10.1.0",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

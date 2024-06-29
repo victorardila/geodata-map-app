@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import User from "../../../assets/image/user.png";
 import ButtonMenu from "../../../assets/data/Buttons.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useGlobalState, setMapCards } from "../../../hooks/GlobalStateContext";
 import {
   faCaretDown,
   faCaretUp,
@@ -12,9 +13,11 @@ import {
   faSignOutAlt,
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie"; // Importar Cookies desde js-cookie
 import "./Sidebar.style.css";
 
 const Sidebar = () => {
+  const { dispatch } = useGlobalState();
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const buttonMenu = ButtonMenu.dashboard.buttons;
@@ -42,11 +45,72 @@ const Sidebar = () => {
     faSignOutAlt: faSignOutAlt,
   };
 
+  useEffect(() => {
+    const search = Cookies.get("searchCheckState");
+    const settings = Cookies.get("settingsCheckState");
+    const info = Cookies.get("infoCheckState");
+  
+    // Update checkbox states and dispatch actions based on cookie values
+    if (search !== undefined && search !== null) {
+      setCheckboxStates((prevStates) => ({
+        ...prevStates,
+        "2-1": search === "true",
+      }));
+      dispatch({
+        type: "search",
+        visible: search === "true",
+      });
+    }
+    if (settings !== undefined && settings !== null) {
+      setCheckboxStates((prevStates) => ({
+        ...prevStates,
+        "2-2": settings === "true",
+      }));
+      dispatch({
+        type: "settings",
+        visible: settings === "true",
+      });
+    }
+    if (info !== undefined && info !== null) {
+      setCheckboxStates((prevStates) => ({
+        ...prevStates,
+        "2-3": info === "true",
+      }));
+      dispatch({
+        type: "info",
+        visible: info === "true",
+      });
+    }
+  }, []); // Empty dependency array ensures this effect runs only once on mount
+  
+
   const handleCheckboxChange = (key) => {
-    setCheckboxStates((prevState) => ({
-      ...prevState,
-      [key]: !prevState[key], // Toggle the checkbox state
-    }));
+    console.log("key", key);
+    setCheckboxStates({
+      ...checkboxStates,
+      [key]: !checkboxStates[key],
+    });
+    if (key === "2-1") {
+      setMapCards(dispatch,{
+        type: "search",
+        visible: !checkboxStates[key],
+      });
+      Cookies.set("searchCheckState", !checkboxStates[key]);
+    }
+    if (key === "2-2") {
+      setMapCards(dispatch,{
+        type: "settings",
+        visible: !checkboxStates[key],
+      });
+      Cookies.set("settingsCheckState", !checkboxStates[key]);
+    }
+    if (key === "2-3") {
+      setMapCards(dispatch,{
+        type: "info",
+        visible: !checkboxStates[key],
+      });
+      Cookies.set("infoCheckState", !checkboxStates[key]);
+    }
   };
 
   const handleSubMenu = (index) => {
@@ -165,9 +229,13 @@ const Sidebar = () => {
                               <input
                                 type="checkbox"
                                 checked={
-                                  checkboxStates[`${index}-${subIndex}`] || false
+                                  checkboxStates[`${index}-${subIndex}`] ||
+                                  false
                                 }
                                 style={{ width: "20px", height: "20px" }}
+                                onClick={() =>
+                                  handleCheckboxChange(`${index}-${subIndex}`)
+                                }
                                 onChange={() =>
                                   handleCheckboxChange(`${index}-${subIndex}`)
                                 }

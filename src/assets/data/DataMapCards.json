@@ -1,0 +1,88 @@
+{
+    "settings":{
+        "menu":[
+            {
+                "label":"Tipo de Mapa",
+                "icon": "faMap",
+                "submenu":[
+                    {
+                        "label":"OpenStreetMap",
+                        "value":"osm"
+                    },
+                    {
+                        "label":"Esri WorldStreetMap",
+                        "value":"esri"
+                    },
+                    {
+                        "label":"CartoDB Voyager",
+                        "value":"cartoVoyager"  
+                    },
+                    {
+                        "label":"CartoDB Positron",
+                        "value":"cartoPositron"
+                    },
+                    {
+                        "label":"CartoDB DarkMatter",
+                        "value":"cartoDark"
+                    },
+                    {
+                        "label":"Thunderforest Outdoors",
+                        "value":"thunderforest"
+                    },
+                    {
+                        "label":"Here Satellite",
+                        "value":"here"
+                    },
+                    {
+                        "label": "Wikimedia",
+                        "value": "wikimedia"
+                    }
+                ]
+            },
+            {
+                "label":"Tipo de visuailización",
+                "icon": "faMapLocationDot",
+                "submenu":[
+                    {
+                        "label":"Mapa de calor",
+                        "value":"heatmap",
+                        "typeMap": "osm"
+                    },
+                    {
+                        "label":"Mapa de etiquetas",
+                        "value":"labels",
+                        "typeMap": "osm"
+                    },
+                    {
+                        "label":"Mapa de area",
+                        "value":"area",
+                        "typeMap": "esri-world-street"
+                    },
+                    {
+                        "label":"Mapa de densidad",
+                        "value":"density",
+                        "typeMap": "cartodb-voyager"
+                    },
+                    {
+                        "label":"Mapa de terreno",
+                        "value":"terrain",
+                        "typeMap": "esri-world-street"
+                    }
+                ]
+            },
+            {
+                "label":"Tomar Captura de Mapa",
+                "icon": "faCamera"
+            },
+            {
+                "label":"Centrar Mapa",
+                "icon": "faArrowsToCircle"
+            },
+            {
+                "label":"Mostrar Ubicación Actual",
+                "icon": "faLocationArrow"
+            }
+        ]
+    },
+    "info":{}
+}
