@@ -38,6 +38,7 @@ const MapView = () => {
 
   useEffect(() => {
     if (typeViewData === "labels") {
+      
     }
   }, [typeViewData]);
 
