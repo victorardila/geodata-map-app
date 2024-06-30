@@ -22,7 +22,6 @@ const MapView = () => {
     zoom: 6,
   });
 
-
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -36,6 +35,11 @@ const MapView = () => {
       });
     }
   }, []);
+
+  useEffect(() => {
+    if (typeViewData === "labels") {
+    }
+  }, [typeViewData]);
 
   const thunderforestApiKey = "a8b55da1ace34ac8b1548ae7b89b7619"; // Reemplaza con tu clave de API de Thunderforest
   const hereApp = {
@@ -94,7 +98,8 @@ const MapView = () => {
 
   // Verificación de que `layer` tenga un valor válido antes de usarlo
   const selectedLayer = layers[layer] || layers.osm;
-  
+  const selectedTypeViewData = typeViewData || "labels";
+
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
