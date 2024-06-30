@@ -1,11 +1,33 @@
+.dashboard-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0%, #9dd3fc),
+    color-stop(20%, #F4E3D5),
+    color-stop(30%, #dfe4f8),
+    color-stop(40%, #D1D0F2),
+    color-stop(50%, #b6dcf2),
+    color-stop(60%, #EBDDE5),
+    color-stop(70%, #E5E5E5),
+    color-stop(80%, #f5f9fe),
+    color-stop(90%, #D1D0F2),
+    color-stop(100%, #a5d8ff)
+);
+  height: 100vh;
+  width: 100vw;
+}
+
 .layout-app {
   display: flex;
   flex-direction: row;
+  height: 98%;
+  width: 98%;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(-45deg, #9dd3fc 10%, #b6dcf2 40%, #a5d8ff 70%);
-  height: 100vh;
-  width: 100vw;
 }
 
 .layout-content {
@@ -21,6 +43,8 @@
   display: flex;
   width: -webkit-fill-available;
   height: 94%;
+  padding-left: 0.8%;
+  padding-top: 0.4%;
   justify-content: center;
   align-items: center;
 }
@@ -28,8 +52,8 @@
 .content-wrapper-card {
   display: flex;
   background: linear-gradient(-45deg, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.9) 70%);
-  width: 98%;
-  height: 98%;
+  width: 100%;
+  height: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;

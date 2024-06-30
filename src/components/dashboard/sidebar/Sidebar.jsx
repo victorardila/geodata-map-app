@@ -61,31 +61,30 @@ const Sidebar = () => {
         visible: search === "true",
       });
     }
-    if (settings !== undefined && settings !== null) {
-      setCheckboxStates((prevStates) => ({
-        ...prevStates,
-        "2-2": settings === "true",
-      }));
-      dispatch({
-        type: "settings",
-        visible: settings === "true",
-      });
-    }
     if (info !== undefined && info !== null) {
       setCheckboxStates((prevStates) => ({
         ...prevStates,
-        "2-3": info === "true",
+        "2-2": info === "true",
       }));
       dispatch({
         type: "info",
         visible: info === "true",
       });
     }
+    if (settings !== undefined && settings !== null) {
+      setCheckboxStates((prevStates) => ({
+        ...prevStates,
+        "2-3": settings === "true",
+      }));
+      dispatch({
+        type: "settings",
+        visible: settings === "true",
+      });
+    }
   }, []); // Empty dependency array ensures this effect runs only once on mount
   
 
   const handleCheckboxChange = (key) => {
-    console.log("key", key);
     setCheckboxStates({
       ...checkboxStates,
       [key]: !checkboxStates[key],
@@ -99,17 +98,17 @@ const Sidebar = () => {
     }
     if (key === "2-2") {
       setMapCards(dispatch,{
-        type: "settings",
-        visible: !checkboxStates[key],
-      });
-      Cookies.set("settingsCheckState", !checkboxStates[key]);
-    }
-    if (key === "2-3") {
-      setMapCards(dispatch,{
         type: "info",
         visible: !checkboxStates[key],
       });
       Cookies.set("infoCheckState", !checkboxStates[key]);
+    }
+    if (key === "2-3") {
+      setMapCards(dispatch,{
+        type: "settings",
+        visible: !checkboxStates[key],
+      });
+      Cookies.set("settingsCheckState", !checkboxStates[key]);
     }
   };
 
@@ -153,7 +152,7 @@ const Sidebar = () => {
                   className="sidebar-button"
                   style={{
                     height:
-                      isSidebarOpen && openSubMenu === index ? "18%" : "5%",
+                      isSidebarOpen && openSubMenu === index ? "23%" : "5%",
                   }}
                   onClick={() => handleSubMenu(index)}
                 >

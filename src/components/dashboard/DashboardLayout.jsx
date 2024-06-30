@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Header from "./header/Header";
-import Map from "../map/MapView";
 import MapCards from "../common/MapCards";
 import { useGlobalState } from "../../hooks/GlobalStateContext";
 import "./DashboardLayout.style.css";
 import Cookies from "js-cookie";
+import MapView from "../map/MapView";
 
 const DashboardLayout = ({ path }) => {
-  const { dispatch } = useGlobalState();
-  const [checkboxStates, setCheckboxStates] = useState({
-    "2-1": false,
-    "2-2": false,
-    "2-3": false,
-  });
+  const { state, dispatch } = useGlobalState();
 
   useEffect(() => {
     const search = Cookies.get("searchCheckState");
@@ -22,68 +17,53 @@ const DashboardLayout = ({ path }) => {
 
     // Update checkbox states and dispatch actions based on cookie values
     if (search !== undefined && search !== null) {
-      setCheckboxStates((prevStates) => ({
-        ...prevStates,
-        "2-1": search === "true",
-      }));
       dispatch({
-        type: "search",
-        visible: search === "true",
+        type: "SET_MAP_CARDS",
+        payload: { type: "search", visible: search === "true" },
       });
     }
     if (settings !== undefined && settings !== null) {
-      setCheckboxStates((prevStates) => ({
-        ...prevStates,
-        "2-2": settings === "true",
-      }));
       dispatch({
-        type: "settings",
-        visible: settings === "true",
+        type: "SET_MAP_CARDS",
+        payload: { type: "settings", visible: settings === "true" },
       });
     }
     if (info !== undefined && info !== null) {
-      setCheckboxStates((prevStates) => ({
-        ...prevStates,
-        "2-3": info === "true",
-      }));
       dispatch({
-        type: "info",
-        visible: info === "true",
+        type: "SET_MAP_CARDS",
+        payload: { type: "info", visible: info === "true" },
       });
     }
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, [state, dispatch]); // Dependencia 'state' asegura que se ejecute cuando 'state' cambie
 
   return (
-    <div className="layout-app">
-      <Sidebar />
-      <div className="layout-content">
-        <Header />
-        <div className="content-wrapper">
-          <div className="content-wrapper-card">
-            <div className="content-wrapper-card-relative">
-              {/*Capa de personalizacion por encima de leaflet*/}
-              <div className="search-bar-container">
-                {
-                  checkboxStates["2-1"] ? (
+    <div className="dashboard-layout">
+      <div className="layout-app">
+        <Sidebar />
+        <div className="layout-content">
+          <Header />
+          <div className="content-wrapper">
+            <div className="content-wrapper-card">
+              <div className="content-wrapper-card-relative">
+                {/* Capa de personalizacion por encima de leaflet */}
+                <div className="search-bar-container">
+                  {state.mapCards.search.visible ? (
                     <MapCards type={"search"} />
-                  ) : null
-                }
-              </div>
-              <div className="container-settings-map">
-                {
-                  checkboxStates["2-3"] ? (
+                  ) : null}
+                </div>
+                <div className="container-settings-map">
+                  {state.mapCards.settings.visible ? (
                     <MapCards type={"settings"} />
-                  ) : null
-                }
-              </div>
-              <div className="container-info-map">
-                {
-                  checkboxStates["2-2"] ? (
+                  ) : null}
+                </div>
+                <div className="container-info-map">
+                  {state.mapCards.info.visible ? (
                     <MapCards type={"info"} />
-                  ) : null
-                }
+                  ) : null}
+                </div>
+                {/* Mapa de leaflet */}
+                {path === "dashboard/map" ? <MapView /> : null}
               </div>
-              {path === "dashboard/map" ? <Map /> : null}
             </div>
           </div>
         </div>

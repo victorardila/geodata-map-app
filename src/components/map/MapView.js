@@ -15,26 +15,13 @@ const { BaseLayer } = LayersControl;
 
 const MapView = () => {
   const { state } = useGlobalState();
-  const { clearRoute, layer } = state;
+  const { layer, typeViewData } = state;
 
   const [location, setLocation] = useState({
     currentLocation: { lat: 4.570868, lng: -74.297333 },
     zoom: 6,
   });
 
-  useEffect(() => {
-    const clearRouteMap = () => {
-      if (clearRoute) {
-        const routingControl = document.getElementsByClassName(
-          "leaflet-routing-container leaflet-bar leaflet-control"
-        )[0];
-        if (routingControl) {
-          routingControl.remove();
-        }
-      }
-    };
-    clearRouteMap();
-  }, [clearRoute]);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -104,6 +91,7 @@ const MapView = () => {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
     },
   };
+
   // Verificación de que `layer` tenga un valor válido antes de usarlo
   const selectedLayer = layers[layer] || layers.osm;
   

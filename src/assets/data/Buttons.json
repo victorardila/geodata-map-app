@@ -67,7 +67,7 @@
                     },
                     {
                         "type":"checkbox",
-                        "label": "Capturas"
+                        "label": "Capturas y rutas"
                     },
                     {
                         "type":"checkbox",

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import DataMapCards from "../../assets/data/DataMapCards.json";
-import { useGlobalState, setLayerMap } from "../../hooks/GlobalStateContext";
+import {
+  useGlobalState,
+  setLayerMap,
+  setTypeViewData,
+} from "../../hooks/GlobalStateContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowsToCircle,
@@ -19,8 +23,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 const MapCards = ({ type }) => {
   const { dispatch } = useGlobalState();
+  const [selectedLayer, setSelectedLayer] = useState(null);
+  const [selectedTypeViewData, setSelectedTypeViewData] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
-  const [selectedOption, setSelectedOption] = useState("");
+
   const dataMapCards = DataMapCards.settings.menu;
 
   const icons = {
@@ -43,21 +49,37 @@ const MapCards = ({ type }) => {
 
   // Cuando se monta el componente, obtener la opción seleccionada guardada en cookies
   useEffect(() => {
-    const storedOption = Cookies.get("layerMapSelected");
-    if (storedOption) {
-      setSelectedOption(storedOption);
+    const storedLayer = Cookies.get("layerMapSelected");
+    const storedTypeViewData = Cookies.get("typeViewDataSelected");
+
+    if (storedLayer) {
+      setSelectedLayer(storedLayer);
       dataMapCards.forEach((button) => {
-        const subButton = button.submenu;
-        if (subButton) {
-          subButton.forEach((sub) => {
-            if (sub.value === storedOption) {
+        const labelButton = button.label;
+        if (labelButton === "Tipo de Mapa") {
+          button.submenu.forEach((sub) => {
+            if (sub.value === storedLayer) {
               setLayerMap(dispatch, sub.value);
             }
           });
         }
       });
     }
-  }, [dataMapCards, dispatch]);
+
+    if (storedTypeViewData) {
+      setSelectedTypeViewData(storedTypeViewData);
+      dataMapCards.forEach((button) => {
+        const labelButton = button.label;
+        if (labelButton === "Tipo de visuailización") {
+          button.submenu.forEach((sub) => {
+            if (sub.value === storedTypeViewData) {
+              setTypeViewData(dispatch, sub.value);
+            }
+          });
+        }
+      });
+    }
+  }, []);
 
   const handleMouseEnter = (e) => {
     e.target.style.transition = "all 0.3s";
@@ -74,13 +96,21 @@ const MapCards = ({ type }) => {
 
   const handleOptionChange = (optionValue) => {
     dataMapCards.forEach((button) => {
-      const subButton = button.submenu;
-      if (subButton) {
-        subButton.forEach((sub) => {
+      const labelButton = button.label;
+      if (labelButton === "Tipo de Mapa") {
+        button.submenu.forEach((sub) => {
           if (sub.value === optionValue) {
+            setSelectedLayer(sub.value);
             setLayerMap(dispatch, sub.value);
-            setSelectedOption(optionValue);
-            Cookies.set("layerMapSelected", optionValue); // Guardar la opción seleccionada en cookies
+            Cookies.set("layerMapSelected", sub.value, { expires: 7 });
+          }
+        });
+      } else if (labelButton === "Tipo de visuailización") {
+        button.submenu.forEach((sub) => {
+          if (sub.value === optionValue) {
+            setSelectedTypeViewData(sub.value);
+            setTypeViewData(dispatch, sub.value);
+            Cookies.set("typeViewDataSelected", sub.value, { expires: 7 });
           }
         });
       }
@@ -111,7 +141,6 @@ const MapCards = ({ type }) => {
         alignItems: "center",
         borderRadius: "10px",
         boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
-        margin: "0px 10px",
       }}
     >
       {/* Barra de búsqueda y filtros */}
@@ -287,7 +316,7 @@ const MapCards = ({ type }) => {
                           <input
                             type="radio"
                             value={subButton.value}
-                            checked={selectedOption === subButton.value}
+                            checked={ selectedLayer === subButton.value || selectedTypeViewData === subButton.value }
                             onChange={() => handleOptionChange(subButton.value)}
                           />
                           <span style={{ fontSize: "16px", marginLeft: "5px" }}>
@@ -356,7 +385,7 @@ const MapCards = ({ type }) => {
                 justifyContent: "center",
               }}
             >
-              <h3>Otra Captura de Mapa</h3>
+              <h3>Rutas guardadas</h3>
             </div>
             <div
               className="content-info"

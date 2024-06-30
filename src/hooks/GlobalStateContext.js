@@ -1,8 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useReducer,
-} from "react";
+import React, { createContext, useContext, useReducer } from "react";
 
 // Definir el contexto
 const GlobalStateContext = createContext();
@@ -12,16 +8,11 @@ export const GlobalStateProvider = ({ children }) => {
   const initialState = {
     clearRoute: false,
     layer: "osm",
+    typeViewData: "heatmap",
     mapCards: {
-      search: {
-        visible: false,
-      },
-      settings: {
-        visible: false,
-      },
-      info: {
-        visible: false,
-      },
+      search: { visible: false },
+      info: { visible: false },
+      settings: { visible: false },
     },
     // Otros estados iniciales que puedas necesitar
   };
@@ -32,14 +23,14 @@ export const GlobalStateProvider = ({ children }) => {
         return { ...state, clearRoute: action.payload };
       case "SET_LAYER_MAP":
         return { ...state, layer: action.payload };
+      case "SET_TYPE_VIEW_DATA":
+        return { ...state, typeViewData: action.payload };
       case "SET_MAP_CARDS":
         return {
           ...state,
           mapCards: {
             ...state.mapCards,
-            [action.payload.type]: {
-              visible: action.payload.visible,
-            },
+            [action.payload.type]: { visible: action.payload.visible },
           },
         };
       // Otros casos de acciones
@@ -65,6 +56,10 @@ export const setClearRoute = (dispatch, route) => {
 export const setLayerMap = (dispatch, layer) => {
   dispatch({ type: "SET_LAYER_MAP", payload: layer });
 };
+
+export const setTypeViewData = (dispatch, type) => {
+  dispatch({ type: "SET_TYPE_VIEW_DATA", payload: type });
+}
 
 export const setMapCards = (dispatch, type, visible) => {
   dispatch({ type: "SET_MAP_CARDS", payload: { type, visible } });
