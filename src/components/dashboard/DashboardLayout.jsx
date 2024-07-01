@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import MapView from "../map/MapView";
 
 const DashboardLayout = ({ path }) => {
-  const { state } = useGlobalState();
+  const { state, dispatch } = useGlobalState();
   const [searchState, setSearchState] = useState(false);
   const [settingsState, setSettingsState] = useState(false);
   const [infoState, setInfoState] = useState(false);
@@ -22,13 +22,25 @@ const DashboardLayout = ({ path }) => {
         const key = cookie === "searchCheckState" ? "search" :
                     cookie === "infoCheckState" ? "info" : "settings";
         const visible = value === "true";
-        if (key === "search") setSearchState(visible);
-        if (key === "info") setInfoState(visible);
-        if (key === "settings") setSettingsState(visible);
+        // if (key === "search") setSearchState(visible)
+        // if (key === "info") setInfoState(visible);
+        // if (key === "settings") setSettingsState(visible);
+        if (key === "search"){
+          setSearchState(visible);
+          dispatch({ type: "SET_MAP_CARDS", payload: { type: "search", visible } });
+        }
+        if (key === "info"){
+          setInfoState(visible);
+          dispatch({ type: "SET_MAP_CARDS", payload: { type: "info", visible } });
+        }
+        if (key === "settings"){
+          setSettingsState(visible);
+          dispatch({ type: "SET_MAP_CARDS", payload: { type: "settings", visible } });
+        }
         console.log(cookie, value);
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="dashboard-layout">
