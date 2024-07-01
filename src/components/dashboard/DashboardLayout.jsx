@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Header from "./header/Header";
 import MapCards from "../common/MapCards";
@@ -8,33 +8,27 @@ import Cookies from "js-cookie";
 import MapView from "../map/MapView";
 
 const DashboardLayout = ({ path }) => {
-  const { state, dispatch } = useGlobalState();
+  const { state } = useGlobalState();
+  const [searchState, setSearchState] = useState(false);
+  const [settingsState, setSettingsState] = useState(false);
+  const [infoState, setInfoState] = useState(false);
 
   useEffect(() => {
-    const search = Cookies.get("searchCheckState");
-    const settings = Cookies.get("settingsCheckState");
-    const info = Cookies.get("infoCheckState");
-
-    // Update checkbox states and dispatch actions based on cookie values
-    if (search !== undefined && search !== null) {
-      dispatch({
-        type: "SET_MAP_CARDS",
-        payload: { type: "search", visible: search === "true" },
-      });
-    }
-    if (settings !== undefined && settings !== null) {
-      dispatch({
-        type: "SET_MAP_CARDS",
-        payload: { type: "settings", visible: settings === "true" },
-      });
-    }
-    if (info !== undefined && info !== null) {
-      dispatch({
-        type: "SET_MAP_CARDS",
-        payload: { type: "info", visible: info === "true" },
-      });
-    }
-  }, [state, dispatch]); // Dependencia 'state' asegura que se ejecute cuando 'state' cambie
+    // Obtengo los valores de las cookies y los asigno a los estados
+    const cookieStates = ["searchCheckState", "infoCheckState", "settingsCheckState"];
+    cookieStates.forEach((cookie) => {
+      const value = Cookies.get(cookie);
+      if (value !== undefined) {
+        const key = cookie === "searchCheckState" ? "search" :
+                    cookie === "infoCheckState" ? "info" : "settings";
+        const visible = value === "true";
+        if (key === "search") setSearchState(visible);
+        if (key === "info") setInfoState(visible);
+        if (key === "settings") setSettingsState(visible);
+        console.log(cookie, value);
+      }
+    });
+  }, []);
 
   return (
     <div className="dashboard-layout">
@@ -49,15 +43,21 @@ const DashboardLayout = ({ path }) => {
                 <div className="search-bar-container">
                   {state.mapCards.search.visible ? (
                     <MapCards type={"search"} />
+                  ) : searchState ? (
+                    <MapCards type={"search"} />
                   ) : null}
                 </div>
                 <div className="container-settings-map">
                   {state.mapCards.settings.visible ? (
                     <MapCards type={"settings"} />
+                  ) : settingsState ? (
+                    <MapCards type={"settings"} />
                   ) : null}
                 </div>
                 <div className="container-info-map">
                   {state.mapCards.info.visible ? (
+                    <MapCards type={"info"} />
+                  ) : infoState ? (
                     <MapCards type={"info"} />
                   ) : null}
                 </div>

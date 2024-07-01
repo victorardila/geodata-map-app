@@ -141,6 +141,7 @@ const MapCards = ({ type }) => {
         alignItems: "center",
         borderRadius: "10px",
         boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+        transition: "display ease-in-out 0.5s",
       }}
     >
       {/* Barra de búsqueda y filtros */}
