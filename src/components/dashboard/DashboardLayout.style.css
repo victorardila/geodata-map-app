@@ -80,6 +80,8 @@
   right: 10px;
   align-items: flex-end;
   justify-content: flex-start;
+  width: 30%;
+  height: 6%;
 }
 
 .container-settings-map {
@@ -87,6 +89,8 @@
   left: 10px;
   transform: translateY(-50%);
   align-items: flex-start;
+  width: 24%;
+  height: 60%;
 }
 
 .container-info-map {
@@ -94,6 +98,8 @@
   right: 10px;
   transform: translateY(-50%);
   align-items: flex-end;
+  width: 24%;
+  height: 60%;
 }
 
 .card-settings,

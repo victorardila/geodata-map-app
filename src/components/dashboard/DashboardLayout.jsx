@@ -1,43 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Header from "./header/Header";
 import MapCards from "../common/MapCards";
-import { useGlobalState } from "../../hooks/GlobalStateContext";
+import { useGlobalState, setMapCards } from "../../hooks/GlobalStateContext";
 import "./DashboardLayout.style.css";
 import Cookies from "js-cookie";
 import MapView from "../map/MapView";
 
 const DashboardLayout = ({ path }) => {
   const { state, dispatch } = useGlobalState();
-  const [searchState, setSearchState] = useState(false);
-  const [settingsState, setSettingsState] = useState(false);
-  const [infoState, setInfoState] = useState(false);
 
   useEffect(() => {
-    // Obtengo los valores de las cookies y los asigno a los estados
-    const cookieStates = ["searchCheckState", "infoCheckState", "settingsCheckState"];
+    // Obtengo los valores de las cookies y lo asigno al GlobalState
+    const cookieStates = [
+      "searchCheckState",
+      "infoCheckState",
+      "settingsCheckState",
+    ];
     cookieStates.forEach((cookie) => {
       const value = Cookies.get(cookie);
       if (value !== undefined) {
-        const key = cookie === "searchCheckState" ? "search" :
-                    cookie === "infoCheckState" ? "info" : "settings";
+        const key =
+          cookie === "searchCheckState"
+            ? "2-1"
+            : cookie === "infoCheckState"
+            ? "2-2"
+            : "2-3";
         const visible = value === "true";
-        // if (key === "search") setSearchState(visible)
-        // if (key === "info") setInfoState(visible);
-        // if (key === "settings") setSettingsState(visible);
-        if (key === "search"){
-          setSearchState(visible);
-          dispatch({ type: "SET_MAP_CARDS", payload: { type: "search", visible } });
-        }
-        if (key === "info"){
-          setInfoState(visible);
-          dispatch({ type: "SET_MAP_CARDS", payload: { type: "info", visible } });
-        }
-        if (key === "settings"){
-          setSettingsState(visible);
-          dispatch({ type: "SET_MAP_CARDS", payload: { type: "settings", visible } });
-        }
-        console.log(cookie, value);
+        // console.log(key, visible);
+        dispatch({
+          type: key === "2-1" ? "search" : key === "2-2" ? "info" : "settings",
+          visible,
+        });
+        setMapCards(
+          dispatch,
+          key === "2-1" ? "search" : key === "2-2" ? "info" : "settings",
+          visible
+        );
       }
     });
   }, [dispatch]);
@@ -52,24 +51,30 @@ const DashboardLayout = ({ path }) => {
             <div className="content-wrapper-card">
               <div className="content-wrapper-card-relative">
                 {/* Capa de personalizacion por encima de leaflet */}
-                <div className="search-bar-container">
+                <div
+                  className="search-bar-container"
+                  style={{
+                    display: state.mapCards.search.visible ? "block" : "none",
+                  }}
+                >
                   {state.mapCards.search.visible ? (
                     <MapCards type={"search"} />
-                  ) : searchState ? (
-                    <MapCards type={"search"} />
                   ) : null}
                 </div>
-                <div className="container-settings-map">
+                <div
+                  className="container-settings-map"
+                  style={{
+                    display: state.mapCards.settings.visible ? "block" : "none",
+                  }}
+                >
                   {state.mapCards.settings.visible ? (
                     <MapCards type={"settings"} />
-                  ) : settingsState ? (
-                    <MapCards type={"settings"} />
                   ) : null}
                 </div>
-                <div className="container-info-map">
+                <div className="container-info-map" style={{
+                    display: state.mapCards.info.visible ? "block" : "none",
+                  }}>
                   {state.mapCards.info.visible ? (
-                    <MapCards type={"info"} />
-                  ) : infoState ? (
                     <MapCards type={"info"} />
                   ) : null}
                 </div>

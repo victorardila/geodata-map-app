@@ -69,7 +69,7 @@ const Sidebar = () => {
     const actionType = key === "2-1" ? "search" : key === "2-2" ? "info" : "settings";
     setMapCards(dispatch, actionType, newCheckboxState);
     Cookies.set(`${actionType}CheckState`, newCheckboxState);
-    console.log(`${actionType}CheckState`, Cookies.get(`${actionType}CheckState`));
+    // console.log(`${actionType}CheckState`, Cookies.get(`${actionType}CheckState`));
   };
 
   const handleSubMenu = (index) => {

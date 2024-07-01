@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import DataMapCards from "../../assets/data/DataMapCards.json";
 import {
@@ -16,7 +16,8 @@ import {
   faMap,
   faMapLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import Cookies from "js-cookie"; // Importar Cookies desde js-cookie
+import html2canvas from "html2canvas";
+import Cookies from "js-cookie";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,6 +27,8 @@ const MapCards = ({ type }) => {
   const [selectedLayer, setSelectedLayer] = useState(null);
   const [selectedTypeViewData, setSelectedTypeViewData] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
+  const [imageURL, setImageURL] = useState(null);
+  const screenshotRef = useRef(null);
 
   const dataMapCards = DataMapCards.settings.menu;
 
@@ -39,14 +42,81 @@ const MapCards = ({ type }) => {
     faLocationArrow: faLocationArrow,
   };
 
-  const handleSubMenu = (index) => {
-    if (openSubMenu === index) {
-      setOpenSubMenu(null);
-    } else {
-      setOpenSubMenu(index);
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  const handleOnClick = (index) => {
+    dataMapCards.forEach((button, i) => {
+      if (i === 0 || i === 1) {
+        if (openSubMenu === index) {
+          setOpenSubMenu(null);
+        } else {
+          setOpenSubMenu(index);
+        }
+      } else {
+        // Botones sin submenu
+        if (i === index) {
+          if (button.label === "Tomar Captura de Mapa") {
+            handleTakeScreenshot();
+          }
+        }
+      }
+    });
+  };
+
+  const handleTakeScreenshot = async () => {
+    console.log("Taking screenshot...");
+    if (screenshotRef.current) {
+      console.log("Screenshot taken!");
+      const canvas = await html2canvas(screenshotRef.current);
+      console.log("Canvas: ", canvas);
+      const dataURL = canvas.toDataURL("image/png");
+      setImageURL(dataURL);
+    }else{
+      console.log("No screenshot ref found");
     }
   };
 
+  const handleMouseEnter = (e) => {
+    e.target.style.transition = "all 0.3s";
+    e.target.style.cursor = "pointer";
+    e.target.style.background = "linear-gradient(-45deg, #fff, #fff)";
+  };
+
+  const handleMouseLeave = (e) => {
+    e.target.style.transition = "all 0.3s";
+    e.target.style.cursor = "pointer";
+    e.target.style.background = "transparent";
+  };
+
+  const handleOptionChangeRadio = (optionValue) => {
+    console.log("Option value: ", optionValue);
+    dataMapCards.forEach((button) => {
+      const labelButton = button.label;
+      if (labelButton === "Tipo de Mapa") {
+        button.submenu.forEach((sub) => {
+          if (sub.value === optionValue) {
+            setSelectedLayer(sub.value);
+            setLayerMap(dispatch, sub.value);
+            Cookies.set("layerMapSelected", sub.value, { expires: 7 });
+          }
+        });
+      } else if (labelButton === "Tipo de visuailización") {
+        button.submenu.forEach((sub) => {
+          if (sub.value === optionValue) {
+            setSelectedTypeViewData(sub.value);
+            setTypeViewData(dispatch, sub.value);
+            Cookies.set("typeViewDataSelected", sub.value, { expires: 7 });
+          }
+        });
+      }
+    });
+  };
   // Cuando se monta el componente, obtener la opción seleccionada guardada en cookies
   useEffect(() => {
     const storedLayer = Cookies.get("layerMapSelected");
@@ -79,51 +149,7 @@ const MapCards = ({ type }) => {
         }
       });
     }
-  }, []);
-
-  const handleMouseEnter = (e) => {
-    e.target.style.transition = "all 0.3s";
-    e.target.style.cursor = "pointer";
-    e.target.style.border = "1px solid #ccc";
-    e.target.style.background = "linear-gradient(-45deg, #fff, #fff)";
-  };
-
-  const handleMouseLeave = (e) => {
-    e.target.style.transition = "all 0.3s";
-    e.target.style.cursor = "pointer";
-    e.target.style.background = "transparent";
-  };
-
-  const handleOptionChange = (optionValue) => {
-    dataMapCards.forEach((button) => {
-      const labelButton = button.label;
-      if (labelButton === "Tipo de Mapa") {
-        button.submenu.forEach((sub) => {
-          if (sub.value === optionValue) {
-            setSelectedLayer(sub.value);
-            setLayerMap(dispatch, sub.value);
-            Cookies.set("layerMapSelected", sub.value, { expires: 7 });
-          }
-        });
-      } else if (labelButton === "Tipo de visuailización") {
-        button.submenu.forEach((sub) => {
-          if (sub.value === optionValue) {
-            setSelectedTypeViewData(sub.value);
-            setTypeViewData(dispatch, sub.value);
-            Cookies.set("typeViewDataSelected", sub.value, { expires: 7 });
-          }
-        });
-      }
-    });
-  };
-
-  const sliderSettings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+  }, [dispatch, dataMapCards, setSelectedLayer, setSelectedTypeViewData]);
 
   return (
     <motion.div
@@ -135,13 +161,13 @@ const MapCards = ({ type }) => {
         flexDirection: "column",
         background:
           "linear-gradient(-45deg, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.9) 70%)",
-        width: type !== "search" ? "400px" : "600px",
-        height: type !== "search" ? "600px" : "70px",
+        width: "100%",
+        height: "100%",
         justifyContent: "center",
         alignItems: "center",
         borderRadius: "10px",
         boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
-        transition: "display ease-in-out 0.5s",
+        transition: "all 0.3s",
       }}
     >
       {/* Barra de búsqueda y filtros */}
@@ -253,6 +279,7 @@ const MapCards = ({ type }) => {
               overflowX: "hidden",
             }}
           >
+            {/* Botones de ajustes de mapa */}
             {dataMapCards.map((button, index) => (
               <div
                 key={index}
@@ -260,10 +287,14 @@ const MapCards = ({ type }) => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  height: openSubMenu === index ? "fit-content" : "5%",
+                  height:
+                    openSubMenu === index && button.submenu
+                      ? "fit-content"
+                      : "5%",
                   margin: "2px 5px",
                 }}
               >
+                {/* Boton de ajuste personalizado */}
                 <button
                   style={{
                     display: "flex",
@@ -275,7 +306,7 @@ const MapCards = ({ type }) => {
                     borderRadius: "5px",
                     background: "linear-gradient(-45deg, #f3f3f3, #f3f3f3)",
                   }}
-                  onClick={() => handleSubMenu(index)}
+                  onClick={() => handleOnClick(index)}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -317,8 +348,11 @@ const MapCards = ({ type }) => {
                           <input
                             type="radio"
                             value={subButton.value}
-                            checked={ selectedLayer === subButton.value || selectedTypeViewData === subButton.value }
-                            onChange={() => handleOptionChange(subButton.value)}
+                            checked={
+                              selectedLayer === subButton.value ||
+                              selectedTypeViewData === subButton.value
+                            }
+                            onChange={() => handleOptionChangeRadio(subButton.value)}
                           />
                           <span style={{ fontSize: "16px", marginLeft: "5px" }}>
                             {subButton.label}
