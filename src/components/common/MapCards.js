@@ -76,7 +76,7 @@ const MapCards = ({ type }) => {
   const handleCenterMap = () => {
     const currentLocation = {
       location: state.currentLocation.location,
-      zoom: 8,
+      zoom: 5,
       state: "current",
     };
     setCurrentLocation(dispatch, currentLocation);
@@ -93,7 +93,7 @@ const MapCards = ({ type }) => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           },
-          zoom: 5,
+          zoom: 8,
           state: "current",
         };
         setCurrentLocation(dispatch, currentLocation);
