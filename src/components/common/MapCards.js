@@ -5,6 +5,7 @@ import {
   useGlobalState,
   setLayerMap,
   setTypeViewData,
+  setCurrentLocation,
 } from "../../hooks/GlobalStateContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,12 +24,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const MapCards = ({ type }) => {
-  const { dispatch } = useGlobalState();
+  const { state, dispatch } = useGlobalState();
   const [selectedLayer, setSelectedLayer] = useState(null);
   const [selectedTypeViewData, setSelectedTypeViewData] = useState(null);
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [imageURL, setImageURL] = useState(null);
-  const screenshotRef = useRef(null);
 
   const dataMapCards = DataMapCards.settings.menu;
 
@@ -63,22 +63,79 @@ const MapCards = ({ type }) => {
         if (i === index) {
           if (button.label === "Tomar Captura de Mapa") {
             handleTakeScreenshot();
+          } else if (button.label === "Centrar Mapa") {
+            handleCenterMap();
+          } else if (button.label === "Mostrar Ubicación Actual") {
+            handleFindCurrentLocation();
           }
         }
       }
     });
   };
 
+  const handleCenterMap = () => {
+    const currentLocation = {
+      location: state.currentLocation.location,
+      zoom: 8,
+      state: "current",
+    };
+    setCurrentLocation(dispatch, currentLocation);
+    Cookies.set("currentLocation", JSON.stringify(currentLocation), {
+      expires: 7,
+    });
+  }
+
+  const handleFindCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const currentLocation = {
+          location: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          },
+          zoom: 5,
+          state: "current",
+        };
+        setCurrentLocation(dispatch, currentLocation);
+        Cookies.set("currentLocation", JSON.stringify(currentLocation), {
+          expires: 7,
+        });
+      });
+    }
+  };
+
   const handleTakeScreenshot = async () => {
-    console.log("Taking screenshot...");
-    if (screenshotRef.current) {
-      console.log("Screenshot taken!");
-      const canvas = await html2canvas(screenshotRef.current);
-      console.log("Canvas: ", canvas);
-      const dataURL = canvas.toDataURL("image/png");
-      setImageURL(dataURL);
-    }else{
-      console.log("No screenshot ref found");
+    if (state.screenshotRef) {
+      setTimeout(async () => {
+        // capturará la imagen del mapa leaflet y la guardará en el estado imageURL
+        const canvas = await html2canvas(state.screenshotRef);
+        const dataURL = canvas.toDataURL("ScreenshopMap/png");
+        setImageURL(dataURL);
+        // mostrar la imagen en una nueva ventana del navegador y ponerle a la url el dataURL
+        const newWindow = window.open();
+        newWindow.document.write(
+          `<body style="margin: 0;">
+            <div style="display: flex; flex-direction: column; width: 100%; height: 100%; border: none">
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; width: -webkit-fill-available; height: 5%; justify-content: center; align-items: center; background-color: white; border: 1px solid #ccc; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <hr></hr>
+                <h3 style="margin: 0; text-align: center;">Captura de Mapa</h3>
+                <div style="display: flex; width: 100%; height: 100%; justify-content: center; align-items: center;">
+                  <buton style="width:10%; border: none; background: transparent; font-size: 20px; cursor: pointer;">
+                    <a href="${dataURL}" download="screenshot.png" style="display: flex; height: 100%; color: black; font-size: 20px; cursor: pointer; justify-content: center; align-items: center;">
+                      <img src="https://img.icons8.com/ios/50/000000/download.png" style="height: 60%;" />
+                    </a>
+                  </buton>
+                  <button style="height: 100%; width:10%; border: none; background: transparent; font-size: 20px; cursor: pointer;" onclick="window.close();">X</button>
+                </div>
+              </div>
+              <div style="display: flex; width: -webkit-fill-available; height: 92%; justify-content: center; align-items: center; padding: 10px;">
+                <img src="${dataURL}" style="width: 100%; height: 100%; border-radius: 10px;" />
+              </div>
+            </div>
+          </body>
+          `
+        );
+      }, 100); // Pequeño retraso de 100ms
     }
   };
 
@@ -352,7 +409,9 @@ const MapCards = ({ type }) => {
                               selectedLayer === subButton.value ||
                               selectedTypeViewData === subButton.value
                             }
-                            onChange={() => handleOptionChangeRadio(subButton.value)}
+                            onChange={() =>
+                              handleOptionChangeRadio(subButton.value)
+                            }
                           />
                           <span style={{ fontSize: "16px", marginLeft: "5px" }}>
                             {subButton.label}

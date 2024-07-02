@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./MapView.style.css";
 import { useGlobalState } from "../../hooks/GlobalStateContext";
-import { MapContainer, TileLayer, LayersControl } from "react-leaflet";
+import { MapContainer, TileLayer, LayersControl, useMap } from "react-leaflet";
 import CurrentMarker from "./current-loctaion-marker/CurrentMarker";
 import "leaflet/dist/leaflet.css";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
@@ -14,38 +14,46 @@ import { motion } from "framer-motion";
 const { BaseLayer } = LayersControl;
 
 const MapView = () => {
-  const { state } = useGlobalState();
+  const thunderforestApiKey = process.env.REACT_APP_THUNDER_FOREST_APIKEY;
+  const { state, dispatch } = useGlobalState();
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const [location, setLocation] = useState(state.currentLocation);
   const { layer, typeViewData } = state;
-
-  const [location, setLocation] = useState({
-    currentLocation: { lat: 4.570868, lng: -74.297333 },
-    zoom: 6,
-  });
+  const localScreenshotRef = useRef(null);
+  const mapRef = useRef(null);
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setLocation({
-          currentLocation: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          },
-          zoom: 13,
-        });
-      });
+    if (state.currentLocation) {
+      setLocation(state.currentLocation);
     }
-  }, []);
+  }, [state.currentLocation, location.zoom, location.location]);
 
   useEffect(() => {
-    if (typeViewData === "labels") {
-      
+    if (localScreenshotRef.current && mapLoaded) {
+      const screenshotRef = localScreenshotRef.current;
+      screenshotRef.style.width = "100%";
+      screenshotRef.style.height = "100%";
+      dispatch({ type: "SET_SCREENSHOT_REF", payload: screenshotRef });
     }
-  }, [typeViewData]);
+  }, [localScreenshotRef, dispatch, mapLoaded]);
 
-  const thunderforestApiKey = "a8b55da1ace34ac8b1548ae7b89b7619"; // Reemplaza con tu clave de API de Thunderforest
+  // Reemplaza con tu clave de API de Thunderforest
   const hereApp = {
     appId: "dXuMwCPtrHDaa2DdmRhj", // Reemplaza con tu clave de aplicación HERE
     appCode: "4IxupNVPEAdz_nIz9f1pej8NG-t3PWQkWqgW2pptFIo", // Reemplaza con tu clave de código HERE
+  };
+
+  // Hook para actualizar el mapa cuando cambian las coordenadas o el zoom
+  const UpdateMap = ({ location }) => {
+    const map = useMap();
+
+    useEffect(() => {
+      if (map) {
+        map.setView(location.location, location.zoom);
+      }
+    }, [location, map]);
+
+    return null;
   };
 
   const layers = {
@@ -99,7 +107,6 @@ const MapView = () => {
 
   // Verificación de que `layer` tenga un valor válido antes de usarlo
   const selectedLayer = layers[layer] || layers.osm;
-  const selectedTypeViewData = typeViewData || "labels";
 
   return (
     <motion.div
@@ -112,8 +119,13 @@ const MapView = () => {
         <FontAwesomeIcon icon={faMapMarked} />
         <span>Mapa Interactivo</span>
       </div>
-      <div className="map">
-        <MapContainer center={location.currentLocation} zoom={location.zoom}>
+      <div className="map" ref={localScreenshotRef}>
+        <MapContainer
+          center={location.location}
+          zoom={location.zoom}
+          whenReady={() => setMapLoaded(true)} // Marca el mapa como cargado cuando esté listo
+          ref={mapRef}
+        >
           <LayersControl position="topright">
             <BaseLayer checked name={selectedLayer.name}>
               <TileLayer
@@ -122,7 +134,10 @@ const MapView = () => {
               />
             </BaseLayer>
           </LayersControl>
-          <CurrentMarker location={location} />
+          {location.state !== "default" ? (
+            <CurrentMarker location={location.location} />
+          ) : null}
+          <UpdateMap location={location} />
         </MapContainer>
       </div>
     </motion.div>

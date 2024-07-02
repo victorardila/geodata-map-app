@@ -14,7 +14,13 @@ export const GlobalStateProvider = ({ children }) => {
       info: { visible: false },
       settings: { visible: false },
     },
-    // Otros estados iniciales que puedas necesitar
+    zoom: 12,
+    currentLocation: {
+      location: { lat: 37.0902405, lng: -95.7128906 },
+      zoom: 4,
+      state: "default",
+    },
+    screenshotRef: null,
   };
 
   const reducer = (state, action) => {
@@ -33,6 +39,10 @@ export const GlobalStateProvider = ({ children }) => {
             [action.payload.type]: { visible: action.payload.visible },
           },
         };
+      case "SET_SCREENSHOT_REF":
+        return { ...state, screenshotRef: action.payload };
+      case "SET_CURRENT_LOCATION":
+        return { ...state, currentLocation: action.payload };
       // Otros casos de acciones
       default:
         return state;
@@ -59,11 +69,19 @@ export const setLayerMap = (dispatch, layer) => {
 
 export const setTypeViewData = (dispatch, type) => {
   dispatch({ type: "SET_TYPE_VIEW_DATA", payload: type });
-}
+};
 
 export const setMapCards = (dispatch, type, visible) => {
   dispatch({ type: "SET_MAP_CARDS", payload: { type, visible } });
 };
+
+export const setScreenshotRef = (dispatch, ref) => {
+  dispatch({ type: "SET_SCREENSHOT_REF", payload: ref });
+};
+
+export const setCurrentLocation = (dispatch, location) => {
+  dispatch({ type: "SET_CURRENT_LOCATION", payload: location });
+}
 
 // Hook personalizado para acceder al estado global
 export const useGlobalState = () => {
