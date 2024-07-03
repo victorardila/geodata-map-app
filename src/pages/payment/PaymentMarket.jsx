@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./PaymentMarket.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import IconPaymentMarket from "../../assets/icon/icon_payment_market.png";
 import BgRoutesMap from "../../assets/image/bg_route_map.jpg";
+import OfferContainer from "../../components/common/OffersContainer";
 
 const InfoPageContent = ({ step }) => {
   const handleNextStep = () => {
@@ -44,6 +46,8 @@ const InfoPageContent = ({ step }) => {
 };
 
 const PaymentMethods = ({ step }) => {
+  const location = useLocation();
+  const { offer } = location.state || {};
   const handlePreviousStep = () => {
     step(0); // Cambia el paso a 0 para retroceder
   };
@@ -58,33 +62,16 @@ const PaymentMethods = ({ step }) => {
       </div>
       <div className="payment-methods-content">
         <h2>Selecciona tu método de pago</h2>
-        <div className="payment-methods-list">
-          <div className="payment-method">
-            <img
-              src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
-              alt="paypal"
-            />
-          </div>
-          <div className="payment-method">
-            <img
-              src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
-              alt="paypal"
-            />
-          </div>
-          <div className="payment-method">
-            <img
-              src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
-              alt="paypal"
-            />
-          </div>
-        </div>
+        <div className=""></div>
       </div>
     </div>
   );
 };
 
-const PaymentMarket = ({ offer }) => {
+const PaymentMarket = () => {
   const [nextStep, setNextStep] = useState(0);
+  const location = useLocation();
+  const { offer } = location.state || {};
 
   return (
     <div className="payment-market">
@@ -95,9 +82,9 @@ const PaymentMarket = ({ offer }) => {
             style={{ backgroundImage: `url(${BgRoutesMap})` }}
           ></div>
           <div className="card-content">
-            {/* Detalles de oferta */}
-            <h2>Resumen de la oferta</h2>
-            <p>¡Aprovecha la oferta de la semana!</p>
+            <h2>Resumen de oferta</h2>
+            <p>Haz clic en la oferta para continuar con la compra</p>
+            <OfferContainer offer={offer} />
           </div>
         </div>
       </div>

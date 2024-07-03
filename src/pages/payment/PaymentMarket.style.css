@@ -150,9 +150,8 @@
 .btn-payment-market {
     padding: 10px 20px;
     font-size: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    background: transparent;
+    border: 1px solid #e6e6e6;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
@@ -194,9 +193,8 @@
     height: 80%;
     padding: 8px 10px;
     font-size: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    border: 1px solid #e6e6e6;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
