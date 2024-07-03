@@ -60,6 +60,9 @@ Los datos sobre la calidad del aire son proporcionados por fuentes confiables y 
 
 ## 📷 Capturas de Pantalla
 
+![Payment Market](https://github.com/Valfonsoardila10/Geodata-map-app/assets/106699036/ce2bed14-f172-4346-8c2d-3af829b251a3)
+*Vista integracion con mercado pago*
+
 ![Login](https://github.com/Valfonsoardila10/Geodata-map-app/assets/106699036/41009eb6-b7c7-4ab8-9e8d-bd1a2394de64)
 *Vista del login de la app*
 
