@@ -196,7 +196,7 @@
     font-size: 20px;
     background-color: #f8f9fa;
     border: 1px solid #f8f9fa;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s;
@@ -204,7 +204,7 @@
 .btn-back:hover {
     background-color: #f2f2f2;
     border: 1px solid #f8f9fa;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     transition: all 0.3s;
 }
 .btn-back svg{
