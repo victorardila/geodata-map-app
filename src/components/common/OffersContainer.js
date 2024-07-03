@@ -5,7 +5,7 @@ const OffersContainer = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const handleClick = () => {
     // Enviar al usurio al login
-    window.location.href = "/login";
+    window.location.href = "/payment-market";
   }
   return (
     <div
