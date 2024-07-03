@@ -5,7 +5,7 @@ const PaymentMarket = lazy(() => import("./pages/payment/PaymentMarket"));
 const LandingLayout = lazy(() => import("./components/landing/LandingLayout"));
 const LoginLayout = lazy(() => import("./components/auth/LoginLayout"));
 const DashboardLayout = lazy(() => import("./components/dashboard/DashboardLayout"));
-const ErrorPage = lazy(() => import("./pages/Error/ErrorPage"));
+const ErrorPage = lazy(() => import("./pages/error/ErrorPage"));
 
 const isAuthenticated = () => {
   // Lógica para verificar si el usuario está autenticado

@@ -6,25 +6,12 @@ import IconPaymentMarket from "../../assets/icon/icon_payment_market.png";
 import BgRoutesMap from "../../assets/image/bg_route_map.jpg";
 
 const InfoPageContent = ({ step }) => {
-  const [nextStep, setNextStep] = useState(0);
-
   const handleNextStep = () => {
-    setNextStep(nextStep + 1);
-    step(nextStep);
+    step(1); // Cambia el paso a 1 para avanzar
   };
 
   return (
-    <div
-      className="info-page-content"
-      style={{
-        display: "flex",
-        width: "100%",
-        height: "100%",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="info-page-content">
       <h2>¿Qué es Payment Market?</h2>
       <p>
         Payment Market es una plataforma de pagos en línea que te permite
@@ -48,50 +35,28 @@ const InfoPageContent = ({ step }) => {
         ¡No esperes más y comienza a disfrutar de los beneficios de Payment
         Market!
       </p>
-      <button className="btn-payment-market" onClick={() => handleNextStep()}>
-        <span onClick={() => handleNextStep()}>
-          <FontAwesomeIcon icon={faShoppingCart} />
-        </span>
-        <strong onClick={() => handleNextStep()}>Continuar con la compra</strong>
+      <button className="btn-payment-market" onClick={handleNextStep}>
+        <FontAwesomeIcon icon={faShoppingCart} />
+        <strong>Continuar con la compra</strong>
       </button>
     </div>
   );
 };
 
-const PaymentMethods = ({step}) => {
-  const [nextStep, setNextStep] = useState(1);
-
-  const handleNextStep = () => {
-    setNextStep(nextStep - 1);
-    step(nextStep);
+const PaymentMethods = ({ step }) => {
+  const handlePreviousStep = () => {
+    step(0); // Cambia el paso a 0 para retroceder
   };
+
   return (
-    <div
-      className="payment-methods"
-      style={{
-        display: "flex",
-        width: "100%",
-        height: "100%",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <div className="payment-methods-options" style={{ display: "flex", width: "100%", alignItems: "flex-satrt" }}>
-        <button
-          className="btn-back"
-          style={{ border: "none", background: "none", cursor: "pointer" }}
-          onClick={() => handleNextStep()}
-        >
-          <span style={{ fontSize: "20px", marginRight: "10px" }} onClick={() => handleNextStep()}>
-            <FontAwesomeIcon icon={faAngleLeft} />
-          </span>
-          <span style={{ fontSize: "20px" }} onClick={() => handleNextStep()}>Regresar</span>
+    <div className="payment-methods">
+      <div className="payment-methods-options">
+        <button className="btn-back" onClick={handlePreviousStep}>
+          <FontAwesomeIcon icon={faAngleLeft} />
+          <span>Regresar</span>
         </button>
       </div>
-      <div
-        className="payment-methods-content"
-        style={{ display: "flex", width: "100%", height: "-webkit-fill-available", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
-      >
+      <div className="payment-methods-content">
         <h2>Selecciona tu método de pago</h2>
         <div className="payment-methods-list">
           <div className="payment-method">
@@ -120,6 +85,7 @@ const PaymentMethods = ({step}) => {
 
 const PaymentMarket = ({ offer }) => {
   const [nextStep, setNextStep] = useState(0);
+
   return (
     <div className="payment-market">
       <div className="container-offer-payment-market">
@@ -129,7 +95,7 @@ const PaymentMarket = ({ offer }) => {
             style={{ backgroundImage: `url(${BgRoutesMap})` }}
           ></div>
           <div className="card-content">
-            {/*Detalles de oferta*/}
+            {/* Detalles de oferta */}
             <h2>Resumen de la oferta</h2>
             <p>¡Aprovecha la oferta de la semana!</p>
           </div>
@@ -157,5 +123,6 @@ const PaymentMarket = ({ offer }) => {
     </div>
   );
 };
+
 
 export default PaymentMarket;
