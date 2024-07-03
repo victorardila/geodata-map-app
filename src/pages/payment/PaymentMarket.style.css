@@ -1,0 +1,172 @@
+.payment-market {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-offer-payment-market {
+    display: flex;
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-offer-payment-market {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    height: 96%;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden; /* Para asegurar que el contenido no se salga del borde redondeado */
+}
+
+.card-offer-payment-market:hover {
+    width: 98%;
+    height: 98%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.card-blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-radius: 10px;
+    filter: blur(2px);
+    transition: filter 0.3s ease-in-out;
+}
+
+.card-offer-payment-market:hover .card-blur-background {
+    image-rendering: pixelated;
+    image-resolution: 300dpi;
+    filter: blur(5px);
+    transition: filter 0.3s ease-in-out;
+}
+
+.card-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.card-content:hover{
+    border: 1px solid #dfdfdf;
+    background: linear-gradient(-145deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+    transition: background-color 0.3s ease-in-out;
+}
+
+.card-content h2 {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-content p {
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.payment-market-section {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-market-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 95%;
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+    transition: all 0.3s;
+}
+
+.payment-market-container hr {
+    width: 90%;
+    border: 1px solid #dfdfdf;
+}
+
+.payment-market-title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+.payment-market-logo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+}
+.payment-market-title p {
+    margin: 0;
+    font-size: 16px;
+    color: #000;
+}
+.payment-market-logo h2 {
+    font-size: 30px;
+    color: #000;
+}
+
+.payment-market-logo img {
+    height: 100%;
+}
+
+.payment-market-content{
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;  
+    height: -webkit-fill-available;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.btn-payment-market {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-payment-market:hover {
+    background-color: #f2f2f2;
+    border: 1px solid #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s;
+}
+
+.btn-payment-market svg{
+    font-size: 20px;
+    margin-right: 10px;
+}

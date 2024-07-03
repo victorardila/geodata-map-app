@@ -1,11 +1,11 @@
 import React, { Suspense, lazy, Navigate } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+const PaymentMarket = lazy(() => import("./pages/payment/PaymentMarket"));
 const LandingLayout = lazy(() => import("./components/landing/LandingLayout"));
-const PaymentMarket = lazy(() => import("./modules/landing/PaymentMarket"));
 const LoginLayout = lazy(() => import("./components/auth/LoginLayout"));
 const DashboardLayout = lazy(() => import("./components/dashboard/DashboardLayout"));
-const ErrorPage = lazy(() => import("./pages/ErrorPage"));
+const ErrorPage = lazy(() => import("./pages/Error/ErrorPage"));
 
 const isAuthenticated = () => {
   // Lógica para verificar si el usuario está autenticado

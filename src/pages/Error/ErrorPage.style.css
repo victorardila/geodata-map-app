@@ -6,13 +6,13 @@
     justify-content: space-evenly;
     align-items: center
 }
-.error-404{
+.error {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.error-404 button{
+.error button{
     padding: 10px 20px;
     font-size: 20px;
     background-color: #f8f9fa;
@@ -23,30 +23,30 @@
     transition: all 0.3s;
 }
 
-.error-404 button:hover{
+.error button:hover{
     background-color: #f8f9fa;
     border: 1px solid #f8f9fa;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-.error-404-info{
+.error-info{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.error-404 svg{
+.error svg{
     font-size: 100px;
 }
-.error-404 h1{
+.error h1{
     font-size: 100px;
     margin: 0;
 }
-.error-404 h2{
+.error h2{
     font-size: 50px;
 }
-.error-404 p{
+.error p{
     font-size: 20px;
     
 }
