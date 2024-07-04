@@ -8,6 +8,8 @@ import BgRoutesMap from "../../assets/image/bg_route_map.jpg";
 import OfferContainer from "../../components/common/OffersContainer";
 
 const InfoPageContent = ({ step }) => {
+  const location = useLocation();
+  const { offer } = location.state || {};
   const handleNextStep = () => {
     step(1); // Cambia el paso a 1 para avanzar
   };
@@ -37,10 +39,12 @@ const InfoPageContent = ({ step }) => {
         ¡No esperes más y comienza a disfrutar de los beneficios de Payment
         Market!
       </p>
-      <button className="btn-payment-market" onClick={handleNextStep}>
-        <FontAwesomeIcon icon={faShoppingCart} />
-        <strong>Continuar con la compra</strong>
-      </button>
+      {offer !== undefined ? (
+        <button className="btn-payment-market" onClick={handleNextStep}>
+          <FontAwesomeIcon icon={faShoppingCart} />
+          <strong>Continuar con la compra</strong>
+        </button>
+      ) : null}
     </div>
   );
 };
@@ -60,9 +64,133 @@ const PaymentMethods = ({ step }) => {
           <span>Regresar</span>
         </button>
       </div>
-      <div className="payment-methods-content">
-        <h2>Selecciona tu método de pago</h2>
-        <div className=""></div>
+      <div className="payment-methods-title">
+        <h2>Finalizar compra</h2>
+      </div>
+      <div className="billing-details-container">
+        <h2>Detalles de facturación</h2>
+        <div className="billing-details">
+          <div className="billing-details-form">
+            <div className="form-group">
+              <label htmlFor="name">
+                Nombre<small>*</small>
+              </label>
+              <input type="text" id="name" placeholder="Nombre" />
+              <label htmlFor="lastname">
+                Apellido<small>*</small>
+              </label>
+              <input type="text" id="lastname" placeholder="Apellido" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="cedula">
+                Numero de cedula<small>*</small>
+              </label>
+              <input type="text" id="cedula" placeholder="Cedula" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="contry-region">
+                Pais/Region<small>*</small>
+              </label>
+              <select id="contry-region">
+                <option value="ecuador">Ecuador</option>
+                <option value="colombia">Colombia</option>
+                <option value="peru">Peru</option>
+                <option value="chile">Chile</option>
+                <option value="argentina">Argentina</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="department">
+                Provincia / departamento<small>*</small>
+              </label>
+              <select id="department">
+                <option value="pichincha">Pichincha</option>
+                <option value="guayas">Guayas</option>
+                <option value="azuay">Azuay</option>
+                <option value="tungurahua">Tungurahua</option>
+                <option value="manabi">Manabi</option>
+              </select>
+              <label htmlFor="city">
+                Ciudad<small>*</small>
+              </label>
+              <select id="city">
+                <option value="quito">Quito</option>
+                <option value="guayaquil">Guayaquil</option>
+                <option value="cuenca">Cuenca</option>
+                <option value="ambato">Ambato</option>
+                <option value="manta">Manta</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="address">
+                Dirección<small>*</small>
+              </label>
+              <input
+                type="text"
+                id="address"
+                placeholder="Calle, Manzana, Lote, Apartamento, Casa o Suite"
+              />
+              <label htmlFor="zip-code">
+                Código Postal<small>(opcional)</small>
+              </label>
+              <input type="text" id="zip-code" placeholder="Código Postal" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="phone">
+                Número de teléfono<small>*</small>
+              </label>
+              <input type="text" id="phone" placeholder="Teléfono" />
+              <label htmlFor="email">
+                Correo electrónico<small>*</small>
+              </label>
+              <input type="email" id="email" placeholder="Correo" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="payment-container">
+        <h2>Revisa tu compra</h2>
+        <div className="payment-content">
+          <div className="payment-content-item">
+            <h2>Suscripcion</h2>
+            <h2>Valor</h2>
+          </div>
+          <div className="payment-content-item">
+            <p>{offer.title}</p>
+            <p>${offer.price}</p>
+          </div>
+          <div className="payment-content-item">
+            <p>SubTotal</p>
+            <p>${offer.price}</p>
+          </div>
+          <div className="payment-content-item">
+            <p>IVA</p>
+            <p>$0</p>
+          </div>
+          <div className="payment-content-item">
+            <p>Total</p>
+            <p>${offer.price}</p>
+          </div>
+        </div>
+        <h2>¿Cómo deseas pagar?</h2>
+        <div className="payment-methods">
+          <div className="payment-methods-item">
+            <input type="radio" id="credit-debit-card" name="payment-method" />
+            <span> Tarjeta de crédito o débito</span>
+          </div>
+          <div className="payment-methods-item">
+            <input type="radio" id="wompi" name="payment-method" />
+            <span> Wompi</span>
+          </div>
+          <div className="payment-methods-item">
+            <input type="radio" id="paypal" name="payment-method" />
+            <span> PayPal</span>
+          </div>
+          <div className="payment-methods-item">
+            <input type="radio" id="pse" name="payment-method" />
+            <span> PSE</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -82,9 +210,29 @@ const PaymentMarket = () => {
             style={{ backgroundImage: `url(${BgRoutesMap})` }}
           ></div>
           <div className="card-content">
-            <h2>Resumen de oferta</h2>
-            <p>Haz clic en la oferta para continuar con la compra</p>
-            <OfferContainer offer={offer} />
+            {offer !== undefined ? (
+              <>
+                <h2>Resumen de oferta</h2>
+                <p>Selecciona tu forma de pago y finaliza tu compra</p>
+                <p>
+                  Una vez realizado el pago, recibirás un correo electrónico con
+                  la confirmación de tu compra.
+                </p>
+                <p>
+                  En el correo electrónico encontrarás un enlace para crear tu
+                  cuenta en nuestra plataforma y acceder a tu oferta.
+                </p>
+                <p>
+                  ¡No esperes más y comienza a disfrutar de los beneficios de
+                  GeoData Map!
+                </p>
+                <OfferContainer offer={offer} />
+              </>
+            ) : (
+              <div className="no-offer">
+                <h2>No se ha seleccionado una oferta</h2>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -110,6 +258,5 @@ const PaymentMarket = () => {
     </div>
   );
 };
-
 
 export default PaymentMarket;
