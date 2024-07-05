@@ -176,7 +176,6 @@ const MapView = () => {
     },
   };
 
-
   // Verificación de que `layer` tenga un valor válido antes de usarlo
   const selectedLayer = layers[layer] || layers.osm;
   const selectedTypeViewData = dataTypes[typeViewData] || dataTypes.default;
