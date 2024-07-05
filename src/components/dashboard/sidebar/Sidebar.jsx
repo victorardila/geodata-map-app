@@ -76,8 +76,9 @@ const Sidebar = () => {
     setOpenSubMenu(openSubMenu === index ? null : index);
   };
 
-  const handleLogout = () => {
-    window.location.href = "/login";
+  const handleOnClick = (route) => {
+    console.log(route);
+    window.location.href = route.includes("logout") ? '/login' : route;
   };
 
   return (
@@ -104,6 +105,7 @@ const Sidebar = () => {
           {buttonMenu.map((button, index) => (
             <React.Fragment key={index}>
               {button.submenu ? (
+                // Si el boton tiene submenu
                 <div
                   className="sidebar-button"
                   style={{
@@ -206,14 +208,13 @@ const Sidebar = () => {
                   </div>
                 </div>
               ) : (
+                // Si el boton no tiene submenu
                 <div
                   className="sidebar-button"
                   style={{ height: "5%", justifyContent: "space-between" }}
                   onClick={() => {
-                    if (button.route.includes("logout")) {
-                      handleLogout();
-                    }
-                  }}
+                    handleOnClick(button.route)}
+                  }
                 >
                   <button style={{ height: "100%" }}>
                     <span

@@ -12,7 +12,8 @@ const Page404 = ({codigo, type, description}) => {
         <h1>{codigo}</h1>
         <h2>{type}</h2>
         <p>{description}</p>
-        <button onClick={() => window.location.href='/'}>Go back</button>
+        {/*Ir a la ruta anterior*/}
+        <button onClick={() => window.history.back()}>Go Back</button>
       </div>
       <div className="error-info">
         <Logo />

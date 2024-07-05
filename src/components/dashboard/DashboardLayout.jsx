@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import Sidebar from "./sidebar/Sidebar";
 import Header from "./header/Header";
 import MapCards from "../common/MapCards";
+import Overview from "../../modules/dashboard/Overview";
+import Datatraement from "../../modules/dashboard/DataTraement";
+import Predictions from "../../modules/dashboard/Predictions";
+import Help from "../../modules/dashboard/Help";
+import Settings from "../../modules/dashboard/Settings";
 import { useGlobalState, setMapCards } from "../../hooks/GlobalStateContext";
 import "./DashboardLayout.style.css";
 import Cookies from "js-cookie";
@@ -51,35 +56,59 @@ const DashboardLayout = ({ path }) => {
             <div className="content-wrapper-card">
               <div className="content-wrapper-card-relative">
                 {/* Capa de personalizacion por encima de leaflet */}
-                <div
-                  className="search-bar-container"
-                  style={{
-                    display: state.mapCards.search.visible ? "block" : "none",
-                  }}
-                >
-                  {state.mapCards.search.visible ? (
-                    <MapCards type={"search"} />
-                  ) : null}
-                </div>
-                <div
-                  className="container-settings-map"
-                  style={{
-                    display: state.mapCards.settings.visible ? "block" : "none",
-                  }}
-                >
-                  {state.mapCards.settings.visible ? (
-                    <MapCards type={"settings"} />
-                  ) : null}
-                </div>
-                <div className="container-info-map" style={{
-                    display: state.mapCards.info.visible ? "block" : "none",
-                  }}>
-                  {state.mapCards.info.visible ? (
-                    <MapCards type={"info"} />
-                  ) : null}
-                </div>
-                {/* Mapa de leaflet */}
-                {path === "dashboard/map" ? <MapView /> : null}
+                {path === "dashboard/map" ? (
+                  <>
+                    <div
+                      className="search-bar-container"
+                      style={{
+                        display: state.mapCards.search.visible
+                          ? "block"
+                          : "none",
+                      }}
+                    >
+                      {state.mapCards.search.visible ? (
+                        <MapCards type={"search"} />
+                      ) : null}
+                    </div>
+                    <div
+                      className="container-settings-map"
+                      style={{
+                        display: state.mapCards.settings.visible
+                          ? "block"
+                          : "none",
+                      }}
+                    >
+                      {state.mapCards.settings.visible ? (
+                        <MapCards type={"settings"} />
+                      ) : null}
+                    </div>
+                    <div
+                      className="container-info-map"
+                      style={{
+                        display: state.mapCards.info.visible ? "block" : "none",
+                      }}
+                    >
+                      {state.mapCards.info.visible ? (
+                        <MapCards type={"info"} />
+                      ) : null}
+                    </div>
+                  </>
+                ) : null}
+                {/* Componentes por rutas */}
+                {path === "dashboard/overview" ? (
+                  <Overview />
+                ) : path === "dashboard/datatraement" ? (
+                  <Datatraement />
+                ) : path === "dashboard/map" ? (
+                  <MapView />
+                ): path === "dashboard/predictions" ? (
+                  <Predictions />
+                ): path === "dashboard/help" ? (
+                  <Help />
+                ): path === "dashboard/settings" ? (
+                  <Settings />
+                ) : null
+                }
               </div>
             </div>
           </div>

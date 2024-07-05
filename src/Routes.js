@@ -35,12 +35,28 @@ function AppRoutes() {
           <Route path="*" element={<ErrorPage codigo={404} type="Page not found" description="The page you are looking for does not exist." />} />
           {/* Rutas protegidas que requieren autenticación y autorización */}
           <Route 
-            path="/dashboard" 
-            element={isAuthenticated() ? <DashboardLayout /> : <Navigate to="/401" />} 
+            path="/dashboard"
+            element={isAuthenticated() ? <DashboardLayout path='dashboard/overview' /> : <Navigate to="/401" />} 
+          />
+          <Route 
+            path="/dashboard/datatraement" 
+            element={isAuthenticated() ? <DashboardLayout path='dashboard/datatraement' /> : <Navigate to="/401" />}
           />
           <Route 
             path="/dashboard/map" 
             element={isAuthenticated() && hasPermission() ? <DashboardLayout path='dashboard/map' /> : <Navigate to="/403" />} 
+          />
+          <Route 
+            path="/dashboard/predictions" 
+            element={isAuthenticated() && hasPermission() ? <DashboardLayout path='dashboard/predictions' /> : <Navigate to="/403" />} 
+          />
+          <Route 
+            path="/dashboard/help" 
+            element={isAuthenticated() && hasPermission() ? <DashboardLayout path='dashboard/help' /> : <Navigate to="/403" />} 
+          />
+          <Route 
+            path="/dashboard/settings" 
+            element={isAuthenticated() ? <DashboardLayout path='dashboard/settings' /> : <Navigate to="/401" />}
           />
         </Routes>
       </Suspense>
