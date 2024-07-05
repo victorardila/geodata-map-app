@@ -36,7 +36,7 @@ const Login = () => {
           </div>
           <div className="form-group">
             <input type="password" id="password" name="password" placeholder='Password' />
-            <p>Forgot your password? <a href="/reset-password">Reset it</a></p>
+            <p>Forgot your password? <a href="/auth/reset-password">Reset it</a></p>
           </div>
           <button type="submit"
           onClick={handleLogin}
@@ -70,7 +70,7 @@ const Login = () => {
             ))
           }
         </div>
-        <p>Don't have an account? <a href="/register">Register</a></p>
+        <p>Don't have an account? <a href="/auth/register">Register</a></p>
       </div>
       <div className="logo">
         <h2>GeoData Map</h2>

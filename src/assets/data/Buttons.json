@@ -27,15 +27,15 @@
         "buttons": [
             {
                 "label": "Iniciar Sesión",
-                "route": "/login"
+                "route": "/auth/login"
             },
             {
                 "label": "Registrarse",
-                "route": "/register"
+                "route": "/auth/register"
             },
             {
                 "label": "Recuperar Contraseña",
-                "route": "/recover"
+                "route": "/auth/recover"
             }
         ]
     },

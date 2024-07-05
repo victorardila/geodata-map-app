@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Map from "../../assets/image/background.png";
 import Login from "./login/Login";
 import Register from "./register/Register";
 import Regain from "./regain/Regain";
 import "./LoginLayout.style.css";
 
-const LoginLayout = ({ path, children }) => {
+const LoginLayout = () => {
+  const { "*": path } = useParams();
+
+  useEffect(() => {
+    console.log(path)
+  }, [path])
+  
   return (
     <div
       className="layout-login"

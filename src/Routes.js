@@ -6,7 +6,9 @@ const PaymentMarket = lazy(() => import("./pages/payment/PaymentMarket"));
 const LandingLayout = lazy(() => import("./components/landing/LandingLayout"));
 // const IconLoctaionAnimated = lazy(()=>import("./components/map/markers/IconLocationAnimated"))
 const LoginLayout = lazy(() => import("./components/auth/LoginLayout"));
-const DashboardLayout = lazy(() => import("./components/dashboard/DashboardLayout"));
+const DashboardLayout = lazy(() =>
+  import("./components/dashboard/DashboardLayout")
+);
 const ErrorPage = lazy(() => import("./pages/error/ErrorPage"));
 const RouteLoader = lazy(() => import("./components/common/RouteLoader"));
 
@@ -27,7 +29,11 @@ const ProtectedRoute = ({ children }) => {
 
 // Componente para rutas protegidas que requieren permisos específicos
 const AdminRoute = ({ children }) => {
-  return isAuthenticated() && hasPermission() ? children : <Navigate to="/403" />;
+  return isAuthenticated() && hasPermission() ? (
+    children
+  ) : (
+    <Navigate to="/403" />
+  );
 };
 
 function AppRoutes() {
@@ -38,16 +44,49 @@ function AppRoutes() {
           {/* Rutas públicas que no requieren autenticación */}
           <Route path="/" element={<LandingLayout />} />
           <Route path="/payment-market" element={<PaymentMarket />} />
-          <Route path="/login" element={<LoginLayout />} />
-          <Route path="/register" element={<LoginLayout />} />
-          <Route path="/reset-password" element={<LoginLayout />} />
-          
+          <Route parh="/auth/*" element={<LoginLayout />} />
           {/* Rutas de error */}
-          <Route path="/401" element={<ErrorPage codigo={401} type="Unauthorized" description="You are not authorized to access this page." />} />
-          <Route path="/403" element={<ErrorPage codigo={403} type="Forbidden" description="You don't have permission to access this page." />} />
-          <Route path="/500" element={<ErrorPage codigo={500} type="Internal Server Error" description="An error occurred on the server. Please try again later." />} />
-          <Route path="*" element={<ErrorPage codigo={404} type="Page not found" description="The page you are looking for does not exist." />} />
-          
+          <Route
+            path="/401"
+            element={
+              <ErrorPage
+                codigo={401}
+                type="Unauthorized"
+                description="You are not authorized to access this page."
+              />
+            }
+          />
+          <Route
+            path="/403"
+            element={
+              <ErrorPage
+                codigo={403}
+                type="Forbidden"
+                description="You don't have permission to access this page."
+              />
+            }
+          />
+          <Route
+            path="/500"
+            element={
+              <ErrorPage
+                codigo={500}
+                type="Internal Server Error"
+                description="An error occurred on the server. Please try again later."
+              />
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <ErrorPage
+                codigo={404}
+                type="Page not found"
+                description="The page you are looking for does not exist."
+              />
+            }
+          />
+
           {/* Rutas protegidas */}
           <Route
             path="/dashboard/*"

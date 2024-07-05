@@ -8,7 +8,7 @@ export const GlobalStateProvider = ({ children }) => {
   const initialState = {
     clearRoute: false,
     layer: "osm",
-    typeViewData: "heatmap",
+    typeViewData: "default",
     mapCards: {
       search: { visible: false },
       info: { visible: false },

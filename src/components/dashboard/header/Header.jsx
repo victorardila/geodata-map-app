@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog } from "@fortawesome/free-solid-svg-icons";
 import "./Header.style.css";
 
-const Header = ({path}) => {
+const Header = () => {
   return (
     <div className="header-state-app">
       <div className="header-state-card">

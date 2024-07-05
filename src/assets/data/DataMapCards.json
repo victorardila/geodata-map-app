@@ -36,6 +36,14 @@
                     {
                         "label": "Wikimedia",
                         "value": "wikimedia"
+                    },
+                    {
+                        "label": "TopoMap",
+                        "value": "opentopomap"
+                    },
+                    {
+                        "label": "OpenRailwayMap",
+                        "value": "openrailwaymap"
                     }
                 ]
             },
@@ -43,6 +51,36 @@
                 "label":"Tipo de visuailización",
                 "icon": "faMapLocationDot",
                 "submenu":[
+                    {
+                        "label": "Por defecto",
+                        "value": "default",
+                        "typeMap": "osm"
+                    },
+                    {
+                        "label": "Mapa vial",
+                        "value": "openrailwaymap",
+                        "typeMap": "osm"
+                    },
+                    {
+                        "label":"Mapa de puntos",
+                        "value":"points",
+                        "typeMap": "osm"
+                    },
+                    {
+                        "label":"Mapa de rutas",
+                        "value":"routes",
+                        "typeMap": "osm"
+                    },
+                    {
+                        "label":"Mapa de polígonos",
+                        "value":"polygons",
+                        "typeMap": "osm"
+                    },
+                    {
+                        "label":"Mapa de líneas",
+                        "value":"lines",
+                        "typeMap": "osm"
+                    },
                     {
                         "label":"Mapa de calor",
                         "value":"heatmap",

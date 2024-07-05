@@ -10,8 +10,9 @@ import { faMapMarked } from "@fortawesome/free-solid-svg-icons";
 import "leaflet-routing-machine";
 import "leaflet-control-custom";
 import { motion } from "framer-motion";
+import { polygon } from "leaflet";
 
-const { BaseLayer } = LayersControl;
+const { BaseLayer, Overlay } = LayersControl;
 
 const MapView = () => {
   const thunderforestApiKey = process.env.REACT_APP_THUNDER_FOREST_APIKEY;
@@ -103,10 +104,82 @@ const MapView = () => {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
     },
+    opentopomap: {
+      name: "OpenTopoMap",
+      url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+      attribution:
+        '&copy; <a href="https://www.opentopomap.org">OpenTopoMap</a> contributors',
+    },
+    openrailwaymap: {
+      name: "OpenRailwayMap",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    },
   };
+
+  const dataTypes = {
+    default: {
+      name: "Default",
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: "",
+    },
+    openrailwaymap: {
+      name: "OpenRailwayMap",
+      url: "https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.openrailwaymap.org">OpenRailwayMap</a> contributors',
+    },
+    points: {
+      name: "Points",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    routes: {
+      name: "Routes",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    polygons: {
+      name: "Polygons",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    lines: {
+      name: "Lines",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    heatmap: {
+      name: "HeatMap",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    labels: {
+      name: "Labels",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    area: {
+      name: "Area",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    density: {
+      name: "Density",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+    terrain: {
+      name: "Terrain",
+      url: "https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="https://www.strava.com">Strava</a>',
+    },
+  };
+
 
   // Verificación de que `layer` tenga un valor válido antes de usarlo
   const selectedLayer = layers[layer] || layers.osm;
+  const selectedTypeViewData = dataTypes[typeViewData] || dataTypes.default;
 
   return (
     <motion.div
@@ -133,6 +206,15 @@ const MapView = () => {
                 attribution={selectedLayer.attribution}
               />
             </BaseLayer>
+            {/* Capa de analisis sobre el mapa*/}
+            {selectedTypeViewData !== "default" ? (
+              <Overlay checked name="OpenRailwayMap">
+                <TileLayer
+                  url={selectedTypeViewData.url}
+                  attribution={selectedTypeViewData.attribution}
+                />
+              </Overlay>
+            ) : null}
           </LayersControl>
           {location.state !== "default" ? (
             <CurrentMarker location={location.location} />
