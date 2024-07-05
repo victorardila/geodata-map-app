@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // Importar componentes de forma dinámica
 const PaymentMarket = lazy(() => import("./pages/payment/PaymentMarket"));
 const LandingLayout = lazy(() => import("./components/landing/LandingLayout"));
+// const IconLoctaionAnimated = lazy(()=>import("./components/map/markers/IconLocationAnimated"))
 const LoginLayout = lazy(() => import("./components/auth/LoginLayout"));
 const DashboardLayout = lazy(() => import("./components/dashboard/DashboardLayout"));
 const ErrorPage = lazy(() => import("./pages/error/ErrorPage"));

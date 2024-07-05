@@ -4,7 +4,7 @@ import "./PaymentMarket.style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import IconPaymentMarket from "../../assets/icon/icon_payment_market.png";
-import BgRoutesMap from "../../assets/image/bg_route_map.jpg";
+import BgRoutesMap from "../../assets/gif/MapGif.gif";
 import OfferContainer from "../../components/common/OffersContainer";
 
 const InfoPageContent = ({ step }) => {

@@ -1,0 +1,4 @@
+lineas para modificar el color de la animacion
+160
+1092
+1376

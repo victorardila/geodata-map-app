@@ -4,13 +4,14 @@ import sectionsData from "../../../assets/data/Sections.json";
 import Footer from "../footer/Footer";
 import "./Content.style.css";
 import presentationImage from '../../../assets/image/presentation.png'; // Importa la imagen
-import featuresImage from '../../../assets/image/features.jpg'; // Importa la imagen
+// import featuresImage from '../../../assets/image/features.jpg'; // Importa la imagen
+import heatmap from '../../../assets/gif/heatmap2.gif'
 import OffertsContainer from "../../common/OffersContainer";
 import FlagTriads from "../../common/FlagTriads";
 
 const images = {
   "presentation.png": presentationImage,
-  "features.jpg": featuresImage,
+  "heatmap.gif": heatmap,
 };
 
 const components = {
