@@ -1,0 +1,11 @@
+WEB de recursos animados
+https://iconscout.com/lottie-animations/map-marker
+
+cargar la animacion desde la pagina oficial
+https://app.lottiefiles.com/animation/857fe4f5-99a4-41a5-8d27-2716930d40b2?panel=download
+
+Para la animacion importada
+lineas para modificar el color de la animacion
+160
+1092
+1376
