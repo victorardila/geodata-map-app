@@ -6,6 +6,7 @@ import { faAngleLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import IconPaymentMarket from "../../assets/icon/icon_payment_market.png";
 import BgRoutesMap from "../../assets/gif/MapGif.gif";
 import OfferContainer from "../../components/common/OffersContainer";
+import DropDownsRadius from "../../components/common/DropDownsRadius";
 
 const InfoPageContent = ({ step }) => {
   const location = useLocation();
@@ -174,22 +175,7 @@ const PaymentMethods = ({ step }) => {
         </div>
         <h2>¿Cómo deseas pagar?</h2>
         <div className="payment-methods">
-          <div className="payment-methods-item">
-            <input type="radio" id="credit-debit-card" name="payment-method" />
-            <span> Tarjeta de crédito o débito</span>
-          </div>
-          <div className="payment-methods-item">
-            <input type="radio" id="wompi" name="payment-method" />
-            <span> Wompi</span>
-          </div>
-          <div className="payment-methods-item">
-            <input type="radio" id="paypal" name="payment-method" />
-            <span> PayPal</span>
-          </div>
-          <div className="payment-methods-item">
-            <input type="radio" id="pse" name="payment-method" />
-            <span> PSE</span>
-          </div>
+          <DropDownsRadius />
         </div>
       </div>
     </div>

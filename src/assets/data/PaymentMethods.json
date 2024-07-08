@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Tarjeta de Crédito o Débito",
+        "description": "Paga con tu tarjeta de crédito o débito de forma segura.",
+        "submenu":[]
+    },
+    {
+        "title": "Wompi",
+        "description": "Paga con Wompi y haz tus compras de forma segura y rápida.",
+        "submenu":[]
+    },
+    {
+        "title": "PayPal",
+        "description": "Paga con PayPal, la plataforma de pagos más segura del mundo.",
+        "submenu":[]
+    },
+    {
+        "title": "PSE",
+        "description": "Paga con PSE, la plataforma de pagos más segura de Colombia.",
+        "submenu":[]
+    }
+]
