@@ -8,10 +8,6 @@ import "./LoginLayout.style.css";
 
 const LoginLayout = () => {
   const { "*": path } = useParams();
-
-  useEffect(() => {
-    console.log(path)
-  }, [path])
   
   return (
     <div

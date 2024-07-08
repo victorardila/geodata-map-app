@@ -151,29 +151,22 @@ const MapCards = ({ type }) => {
     e.target.style.background = "transparent";
   };
 
-  const handleOptionChangeRadio = (optionValue) => {
-    console.log("Option value: ", optionValue);
-    dataMapCards.forEach((button) => {
-      const labelButton = button.label;
-      if (labelButton === "Tipo de Mapa") {
-        button.submenu.forEach((sub) => {
-          if (sub.value === optionValue) {
-            setSelectedLayer(sub.value);
-            setLayerMap(dispatch, sub.value);
-            Cookies.set("layerMapSelected", sub.value, { expires: 7 });
-          }
-        });
-      } else if (labelButton === "Tipo de visuailización") {
-        button.submenu.forEach((sub) => {
-          if (sub.value === optionValue) {
-            setSelectedTypeViewData(sub.value);
-            setTypeViewData(dispatch, sub.value);
-            Cookies.set("typeViewDataSelected", sub.value, { expires: 7 });
-          }
-        });
-      }
-    });
+  const handleOptionChangeRadio = (optionValue, button) => {
+    if (button === "Tipo de Mapa") {
+      // obtengo el submenu de la opción seleccionada de dataMapCards de forma directa
+      const submenu = dataMapCards[0].submenu.find((sub) => sub.value === optionValue); 
+      setSelectedLayer(submenu.value);
+      setLayerMap(dispatch, submenu.value);
+      Cookies.set("layerMapSelected", submenu.value, { expires: 7 });
+    }else if (button === "Tipo de visuailización") {
+      // obtengo el submenu de la opción seleccionada de dataMapCards de forma directa
+      const submenu = dataMapCards[1].submenu.find((sub) => sub.value === optionValue);
+      setSelectedTypeViewData(submenu.value);
+      setTypeViewData(dispatch, submenu.value);
+      Cookies.set("typeViewDataSelected", submenu.value, { expires: 7 });
+    }
   };
+
   // Cuando se monta el componente, obtener la opción seleccionada guardada en cookies
   useEffect(() => {
     const storedLayer = Cookies.get("layerMapSelected");
@@ -191,6 +184,11 @@ const MapCards = ({ type }) => {
           });
         }
       });
+    }else{
+      console.log("No hay layer guardado");
+      setLayerMap(dispatch, "osm");
+      setSelectedLayer("osm");
+      Cookies.set("layerMapSelected", "osm", { expires: 7 });
     }
 
     if (storedTypeViewData) {
@@ -205,6 +203,11 @@ const MapCards = ({ type }) => {
           });
         }
       });
+    }else{
+      console.log("No hay typeViewData guardado");
+      setTypeViewData(dispatch, "default");
+      setSelectedTypeViewData("default");
+      Cookies.set("typeViewDataSelected", "default", { expires: 7 });
     }
   }, [dispatch, dataMapCards, setSelectedLayer, setSelectedTypeViewData]);
 
@@ -242,12 +245,12 @@ const MapCards = ({ type }) => {
             style={{
               display: "flex",
               height: "100%",
-              width: "40%",
+              width: "-webkit-fill-available",
               alignItems: "center",
               justifyContent: "space-evenly",
             }}
           >
-            <select
+            {/* <select
               style={{
                 width: "40%",
                 height: "40px",
@@ -276,19 +279,19 @@ const MapCards = ({ type }) => {
               <option value="saab">Saab</option>
               <option value="mercedes">Mercedes</option>
               <option value="audi">Audi</option>
-            </select>
+            </select> */}
           </div>
           {/* Barra de búsqueda */}
           <div
             style={{
               display: "flex",
-              width: "60%",
+              width: "75%",
               height: "100%",
-              justifyContent: "center",
+              justifyContent: "flex-end",
               alignItems: "center",
             }}
           >
-            <input
+            {/* <input
               type="text"
               placeholder="Search"
               style={{
@@ -299,7 +302,7 @@ const MapCards = ({ type }) => {
                 padding: "0 10px",
                 fontSize: "16px",
               }}
-            />
+            /> */}
           </div>
         </div>
       ) : type === "settings" ? (
@@ -406,11 +409,10 @@ const MapCards = ({ type }) => {
                             type="radio"
                             value={subButton.value}
                             checked={
-                              selectedLayer === subButton.value ||
-                              selectedTypeViewData === subButton.value
+                              selectedLayer === subButton.value || selectedTypeViewData === subButton.value
                             }
                             onChange={() =>
-                              handleOptionChangeRadio(subButton.value)
+                              handleOptionChangeRadio(subButton.value, button.label)
                             }
                           />
                           <span style={{ fontSize: "16px", marginLeft: "5px" }}>

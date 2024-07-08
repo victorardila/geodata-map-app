@@ -3,15 +3,21 @@ import User from "../../../assets/image/user.png";
 import ButtonMenu from "../../../assets/data/Buttons.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useGlobalState, setMapCards } from "../../../hooks/GlobalStateContext";
+import signOut from "../../../assets/svg/signOut.svg";
+import statics from "../../../assets/svg/statics.svg";
+import map from "../../../assets/svg/map.svg";
+import robot from "../../../assets/svg/robot.svg";
+import database from "../../../assets/svg/database.svg";
+import info from "../../../assets/svg/info.svg";
 import {
   faCaretDown,
   faCaretUp,
-  faChartLine,
-  faDatabase,
-  faMap,
-  faRobot,
-  faSignOutAlt,
-  faCircleInfo,
+  // faChartLine,
+  // faDatabase,
+  // faMap,
+  // faRobot,
+  // faSignOutAlt,
+  // faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie"; // Importar Cookies desde js-cookie
 import "./Sidebar.style.css";
@@ -22,6 +28,15 @@ const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const buttonMenu = ButtonMenu.dashboard.buttons;
 
+  const icons = {
+    "statics": statics,
+    "database": database,
+    "map": map,
+    "robot": robot,  
+    "info": info,
+    "signOut": signOut,
+  };
+
   const initialCheckboxStates = {
     "2-1": state.mapCards.search.visible,
     "2-2": state.mapCards.info.visible,
@@ -29,15 +44,6 @@ const Sidebar = () => {
   };
 
   const [checkboxStates, setCheckboxStates] = useState(initialCheckboxStates);
-
-  const icons = {
-    faChartLine,
-    faDatabase,
-    faMap,
-    faRobot,
-    faCircleInfo,
-    faSignOutAlt,
-  };
 
   useEffect(() => {
     const cookieStates = ["searchCheckState", "infoCheckState", "settingsCheckState"];
@@ -77,8 +83,7 @@ const Sidebar = () => {
   };
 
   const handleOnClick = (route) => {
-    console.log(route);
-    window.location.href = route.includes("logout") ? '/login' : route;
+    window.location.href = route.includes("logout") ? '/auth/login' : route;
   };
 
   return (
@@ -126,10 +131,15 @@ const Sidebar = () => {
                       className="button-icon"
                       style={{
                         display: "flex",
+                        width: isSidebarOpen ? "22%" : "100%",
+                        justifyContent: isSidebarOpen ? "flex-start" : "center",
                         fontSize: isSidebarOpen ? "18px" : "22px",
+                        transition: "all 0.3s",
                       }}
                     >
-                      <FontAwesomeIcon icon={icons[button.icon]} />
+                      {/* cada boton tiene su propia animacion solo es mapearla */}
+                      <img src={icons[button.icon]} alt={button.icon} className="icon-transition" />
+                      {/* <FontAwesomeIcon icon={icons[button.icon]} fade={button.anim} /> */}
                     </span>
                     <span
                       className="button-label"
@@ -221,13 +231,14 @@ const Sidebar = () => {
                       className="button-icon"
                       style={{
                         display: "flex",
-                        width: isSidebarOpen ? "20%" : "100%",
+                        width: isSidebarOpen ? "28%" : "100%",
                         justifyContent: isSidebarOpen ? "flex-start" : "center",
                         fontSize: isSidebarOpen ? "18px" : "22px",
                         transition: "all 0.3s",
                       }}
                     >
-                      <FontAwesomeIcon icon={icons[button.icon]} />
+                      <img src={icons[button.icon]} alt={button.icon} className="icon-transition" />
+                      {/* <FontAwesomeIcon icon={icons[button.icon]} fade={button.anim} /> */}
                     </span>
                     <span
                       className="button-label"

@@ -42,7 +42,7 @@
                         "value": "opentopomap"
                     },
                     {
-                        "label": "OpenRailwayMap",
+                        "label": "Open Railway Map",
                         "value": "openrailwaymap"
                     }
                 ]
@@ -53,58 +53,47 @@
                 "submenu":[
                     {
                         "label": "Por defecto",
-                        "value": "default",
-                        "typeMap": "osm"
+                        "value": "default"
                     },
                     {
-                        "label": "Mapa vial",
-                        "value": "openrailwaymap",
-                        "typeMap": "osm"
+                        "label": "Mapa ferreo",
+                        "value": "rails"
                     },
                     {
                         "label":"Mapa de puntos",
-                        "value":"points",
-                        "typeMap": "osm"
+                        "value":"points"
                     },
                     {
                         "label":"Mapa de rutas",
-                        "value":"routes",
-                        "typeMap": "osm"
+                        "value":"routes"
                     },
                     {
                         "label":"Mapa de polígonos",
-                        "value":"polygons",
-                        "typeMap": "osm"
+                        "value":"polygons"
                     },
                     {
                         "label":"Mapa de líneas",
-                        "value":"lines",
-                        "typeMap": "osm"
+                        "value":"lines"
                     },
                     {
                         "label":"Mapa de calor",
-                        "value":"heatmap",
-                        "typeMap": "osm"
+                        "value":"heatmap"
                     },
                     {
                         "label":"Mapa de etiquetas",
-                        "value":"labels",
-                        "typeMap": "osm"
+                        "value":"labels"
                     },
                     {
                         "label":"Mapa de area",
-                        "value":"area",
-                        "typeMap": "esri-world-street"
+                        "value":"area"
                     },
                     {
                         "label":"Mapa de densidad",
-                        "value":"density",
-                        "typeMap": "cartodb-voyager"
+                        "value":"density"
                     },
                     {
                         "label":"Mapa de terreno",
-                        "value":"terrain",
-                        "typeMap": "esri-world-street"
+                        "value":"terrain"
                     }
                 ]
             },

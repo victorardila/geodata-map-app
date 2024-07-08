@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "../../../assets/image/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -6,10 +6,16 @@ import { motion } from "framer-motion";
 import "./Register.style.css";
 
 const Register = () => {
-
+  const width = window.innerWidth;
+  
   const handleClick = () => {
-    window.location.href = "/login";
+    if (width > 768) {
+      window.location.href = "/auth/login";
+    } else {
+      window.history.back();
+    }
   }
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = document.getElementById("name").value;

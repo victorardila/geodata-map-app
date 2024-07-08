@@ -15,20 +15,28 @@ import { polygon } from "leaflet";
 const { BaseLayer, Overlay } = LayersControl;
 
 const MapView = () => {
-  const thunderforestApiKey = process.env.REACT_APP_THUNDER_FOREST_APIKEY;
   const { state, dispatch } = useGlobalState();
+  const [timeNasaMap, setTimeNasaMap] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [location, setLocation] = useState(state.currentLocation);
   const { layer, typeViewData } = state;
   const localScreenshotRef = useRef(null);
   const mapRef = useRef(null);
+  // Variables de entorno
+  const thunderforestApiKey = process.env.REACT_APP_THUNDER_FOREST_APIKEY;
+  const hereApp = {
+    appId: process.env.REACT_APP_HEREWEGO_APPID,
+    apikey: process.env.REACT_APP_HEREWEGO_APIKEY,
+  };
 
+  // Actualiza la ubicación actual en el estado global
   useEffect(() => {
     if (state.currentLocation) {
       setLocation(state.currentLocation);
     }
   }, [state.currentLocation, location.zoom, location.location]);
 
+  // Actualiza la referencia del mapa en el estado global
   useEffect(() => {
     if (localScreenshotRef.current && mapLoaded) {
       const screenshotRef = localScreenshotRef.current;
@@ -37,13 +45,7 @@ const MapView = () => {
       dispatch({ type: "SET_SCREENSHOT_REF", payload: screenshotRef });
     }
   }, [localScreenshotRef, dispatch, mapLoaded]);
-
-  // Reemplaza con tu clave de API de Thunderforest
-  const hereApp = {
-    appId: "dXuMwCPtrHDaa2DdmRhj", // Reemplaza con tu clave de aplicación HERE
-    appCode: "4IxupNVPEAdz_nIz9f1pej8NG-t3PWQkWqgW2pptFIo", // Reemplaza con tu clave de código HERE
-  };
-
+  
   // Hook para actualizar el mapa cuando cambian las coordenadas o el zoom
   const UpdateMap = ({ location }) => {
     const map = useMap();
@@ -94,7 +96,7 @@ const MapView = () => {
     },
     here: {
       name: "Here Satellite",
-      url: `https://aerial.maps.cit.api.here.com/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8?app_id=${hereApp.appId}&app_code=${hereApp.appCode}`,
+      url: `https://1.aerial.maps.ls.hereapi.com/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8?apiKey=${hereApp.apikey}`,
       attribution:
         'Map data &copy; 1987-2024 <a href="https://developer.here.com/documentation/map-tile/dev_guide/topics/quick-start.html">HERE</a>',
     },
@@ -121,13 +123,14 @@ const MapView = () => {
   const dataTypes = {
     default: {
       name: "Default",
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      url: "",
       attribution: "",
     },
-    openrailwaymap: {
-      name: "OpenRailwayMap",
+    rails: {
+      name: "Rails",
       url: "https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png",
-      attribution: '&copy; <a href="https://www.openrailwaymap.org">OpenRailwayMap</a> contributors',
+      attribution:
+        '&copy; <a href="https://www.openrailwaymap.org">OpenRailwayMap</a> contributors',
     },
     points: {
       name: "Points",
@@ -200,14 +203,24 @@ const MapView = () => {
         >
           <LayersControl position="topright">
             <BaseLayer checked name={selectedLayer.name}>
-              <TileLayer
-                url={selectedLayer.url}
-                attribution={selectedLayer.attribution}
-              />
+              {
+                selectedLayer.name === "NASA GIBS MODIS Terra" ? (
+                  <TileLayer
+                    url={selectedLayer.url}
+                    attribution={selectedLayer.attribution}
+                    tileMatrixSet={selectedLayer.tileMatrixSet}
+                  />
+                ) : (
+                  <TileLayer
+                    url={selectedLayer.url}
+                    attribution={selectedLayer.attribution}
+                  />
+                )
+              }
             </BaseLayer>
             {/* Capa de analisis sobre el mapa*/}
             {selectedTypeViewData !== "default" ? (
-              <Overlay checked name="OpenRailwayMap">
+              <Overlay checked name={selectedTypeViewData.name}>
                 <TileLayer
                   url={selectedTypeViewData.url}
                   attribution={selectedTypeViewData.attribution}

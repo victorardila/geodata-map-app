@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Forgot from "../../../assets/image/forgot.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -6,14 +6,21 @@ import { motion } from "framer-motion";
 import "./Regain.style.css";
 
 const Regain = () => {
+  const width = window.innerWidth;
 
   const handleClick = () => {
-    window.location.href = "/login";
+    if (width > 768) {
+      window.location.href = "/auth/login";
+    } else {
+      window.history.back();
+    }
   };
+
   const handleRegain = (e) => {
     e.preventDefault();
     const email = document.getElementById("email").value;
   }
+
   return (
     <motion.div
       className="container"

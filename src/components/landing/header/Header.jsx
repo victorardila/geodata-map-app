@@ -46,7 +46,7 @@ const Header = ({ backgroundHeader }) => {
         <ButtonMenu
           text="Acceder"
           type="button-login"
-          route="/auth/"
+          route="/auth/login"
           color={backgroundHeader}
         />
       </div>

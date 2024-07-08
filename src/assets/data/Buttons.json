@@ -42,17 +42,20 @@
     "dashboard": {
         "buttons": [
             {
-                "icon": "faChartLine",
+                "icon": "statics",
+                "anim": "fade",
                 "label": "Resumen",
                 "route": "/dashboard/overview"
             },
             {
-                "icon": "faDatabase",
+                "icon": "database",
+                "anim": "fade",
                 "label": "DataTraement",
                 "route": "/dashboard/datatraement"
             },
             {
-                "icon": "faMap",
+                "icon": "map",
+                "anim": "fade",
                 "label": "Mapa interactivo",
                 "route": "",
                 "submenu": [
@@ -76,17 +79,20 @@
                 ]
             },
             {
-                "icon": "faRobot",
+                "icon": "robot",
+                "anim": "fade",
                 "label": "Predicciones con IA",
                 "route": "/dashboard/predictions"
             },
             {
-                "icon": "faCircleInfo",
+                "icon": "info",
+                "anim": "fade",
                 "label": "Ayuda",
                 "route": "/dashboard/help"
             },
             {
-                "icon": "faSignOutAlt",
+                "icon": "signOut",
+                "anim": "fade",
                 "label": "Cerrar Sesión",
                 "route": "/logout"
             }

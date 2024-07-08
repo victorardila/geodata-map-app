@@ -98,6 +98,7 @@
 .sidebar-button button:hover {
   background-color: #f6f6f6;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: bold;
 }
 .sidebar-button button:active{
   background-color: #f6f6f6;
@@ -118,6 +119,7 @@
   box-shadow: none !important;
 }
 .icon-transition {
+  width: 65%;
   transition: transform 0.3s ease;
 }
 

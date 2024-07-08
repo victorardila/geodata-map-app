@@ -44,7 +44,7 @@ function AppRoutes() {
           {/* Rutas públicas que no requieren autenticación */}
           <Route path="/" element={<LandingLayout />} />
           <Route path="/payment-market" element={<PaymentMarket />} />
-          <Route parh="/auth/*" element={<LoginLayout />} />
+          <Route path="/auth/*" element={<LoginLayout />} />
           {/* Rutas de error */}
           <Route
             path="/401"
