@@ -1,7 +1,8 @@
 import React from "react";
 import Logo from "../../../assets/icon/icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faBell } from "@fortawesome/free-solid-svg-icons";
+import notification from "../../../assets/gif/notification.gif";
 import "./Header.style.css";
 
 const Header = () => {
@@ -17,8 +18,9 @@ const Header = () => {
             <h3>Dashboard</h3>
           </div>
           <div className="header-cog-state">
-            <FontAwesomeIcon icon={faBell} />
-            <FontAwesomeIcon icon={faCog} />
+            {/* <img src={notification} alt="Notification" /> */}
+            <FontAwesomeIcon icon={faBell} shake style={{color: "rgba(242, 185, 12)"}} />
+            <FontAwesomeIcon icon={faCog} spin style={{color: "rgba(40, 40, 40, 0.7)"}} />
           </div>
         </div>
       </div>
