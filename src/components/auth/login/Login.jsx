@@ -1,26 +1,33 @@
-import React from 'react'
-import Logo from '../../../assets/icon/icon.png'
-import './Login.style.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faGithub,
-  faGoogle,
-} from "@fortawesome/free-brands-svg-icons";
+import React, { useEffect, useState } from 'react';
+import Logo from '../../../assets/icon/icon.png';
+import './Login.style.css';
+import GitHubAuthentiaction from '../../../api/socialauth/GitHubAuthentiaction';
+import GoogleAuthentiaction from '../../../api/socialauth/GoogleAuthentication';
+import FacebookAuthentiaction from '../../../api/socialauth/FacebookAuthentication';
 
 const Login = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const githubUser = JSON.parse(localStorage.getItem("githubUser"));
+    if (githubUser) {
+      setUser(githubUser);
+    }
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-  }
-  
-  const socialMediaBarIcons = [
-    { icon: faFacebook, color: "#3b5998", name: "facebook" },
-    { icon: faGithub, color: "#333", name: "github" },
-    { icon: faGoogle, color: "#dd4b39", name: "gmail" },
-  ];
+    // Lógica de autenticación con correo y contraseña
+  };
+
+  const authenticater = {
+    loginGitHub: <GitHubAuthentiaction />,
+    loginGoogle: <GoogleAuthentiaction />,
+    loginFacebook: <FacebookAuthentiaction />
+  };
+
   return (
     <div className="container">
       <div className="head">
@@ -30,18 +37,23 @@ const Login = () => {
         </div>
       </div>
       <div className="login-form">
-        <form>
-          <div className="form-group">
-            <input type="email" id="email" name="email" placeholder='Email' />
+        {user ? (
+          <div>
+            <h2>Bienvenido, {user.login}</h2>
+            <img src={user.avatar_url} alt="Avatar" style={{ width: '50px', borderRadius: '50%' }} />
           </div>
-          <div className="form-group">
-            <input type="password" id="password" name="password" placeholder='Password' />
-            <p>Forgot your password? <a href="/auth/reset-password">Reset it</a></p>
-          </div>
-          <button type="submit"
-          onClick={handleLogin}
-          >Login</button>
-        </form>
+        ) : (
+          <form>
+            <div className="form-group">
+              <input type="email" id="email" name="email" placeholder='Email' />
+            </div>
+            <div className="form-group">
+              <input type="password" id="password" name="password" placeholder='Password' />
+              <p>Forgot your password? <a href="/auth/reset-password">Reset it</a></p>
+            </div>
+            <button type="submit" onClick={handleLogin}>Login</button>
+          </form>
+        )}
       </div>
       <div className='options'>
         <div className="divider">
@@ -50,25 +62,9 @@ const Login = () => {
           <hr />
         </div>
         <div className="social-login">
-          {
-            socialMediaBarIcons.map((socialMediaIcon, index) => (
-              <a
-                key={index}
-                href={`https://www.${socialMediaIcon.name}.com`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon
-                  icon={socialMediaIcon.icon}
-                  style={{
-                    color: socialMediaIcon.color,
-                    fontSize: "30px",
-                    margin: "0 1em",
-                  }}
-                />
-              </a>
-            ))
-          }
+          {authenticater.loginGitHub}
+          {authenticater.loginGoogle}
+          {authenticater.loginFacebook}
         </div>
         <p>Don't have an account? <a href="/auth/register">Register</a></p>
       </div>
@@ -76,7 +72,7 @@ const Login = () => {
         <h2>GeoData Map</h2>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

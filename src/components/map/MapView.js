@@ -10,7 +10,6 @@ import { faMapMarked } from "@fortawesome/free-solid-svg-icons";
 import "leaflet-routing-machine";
 import "leaflet-control-custom";
 import { motion } from "framer-motion";
-import { polygon } from "leaflet";
 
 const { BaseLayer, Overlay } = LayersControl;
 

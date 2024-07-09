@@ -16,6 +16,7 @@ import {
   faLocationArrow,
   faMap,
   faMapLocationDot,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import html2canvas from "html2canvas";
 import Cookies from "js-cookie";
@@ -40,6 +41,7 @@ const MapCards = ({ type }) => {
     faArrowsToCircle: faArrowsToCircle,
     faCrosshairs: faCrosshairs,
     faLocationArrow: faLocationArrow,
+    faSearch: faSearch,
   };
 
   const sliderSettings = {
@@ -83,7 +85,7 @@ const MapCards = ({ type }) => {
     Cookies.set("currentLocation", JSON.stringify(currentLocation), {
       expires: 7,
     });
-  }
+  };
 
   const handleFindCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -139,28 +141,46 @@ const MapCards = ({ type }) => {
     }
   };
 
-  const handleMouseEnter = (e) => {
+  const handleEnterSettings = (e) => {
     e.target.style.transition = "all 0.3s";
     e.target.style.cursor = "pointer";
     e.target.style.background = "linear-gradient(-45deg, #fff, #fff)";
   };
 
-  const handleMouseLeave = (e) => {
+  const handleLeaveSettings = (e) => {
     e.target.style.transition = "all 0.3s";
     e.target.style.cursor = "pointer";
     e.target.style.background = "transparent";
   };
 
+  const handleSearchValue = (e) => {
+    console.log(e.target.value);
+  };
+
+  const handleEnterSearch = (e) => {
+    e.target.style.transition = "all 0.3s";
+    e.target.style.cursor = "pointer";
+  }
+
+  const handleLeaveSearch = (e) => {
+    e.target.style.transition = "all 0.3s";
+    e.target.style.cursor = "pointer";
+  }
+
   const handleOptionChangeRadio = (optionValue, button) => {
     if (button === "Tipo de Mapa") {
       // obtengo el submenu de la opción seleccionada de dataMapCards de forma directa
-      const submenu = dataMapCards[0].submenu.find((sub) => sub.value === optionValue); 
+      const submenu = dataMapCards[0].submenu.find(
+        (sub) => sub.value === optionValue
+      );
       setSelectedLayer(submenu.value);
       setLayerMap(dispatch, submenu.value);
       Cookies.set("layerMapSelected", submenu.value, { expires: 7 });
-    }else if (button === "Tipo de visuailización") {
+    } else if (button === "Tipo de visuailización") {
       // obtengo el submenu de la opción seleccionada de dataMapCards de forma directa
-      const submenu = dataMapCards[1].submenu.find((sub) => sub.value === optionValue);
+      const submenu = dataMapCards[1].submenu.find(
+        (sub) => sub.value === optionValue
+      );
       setSelectedTypeViewData(submenu.value);
       setTypeViewData(dispatch, submenu.value);
       Cookies.set("typeViewDataSelected", submenu.value, { expires: 7 });
@@ -184,7 +204,7 @@ const MapCards = ({ type }) => {
           });
         }
       });
-    }else{
+    } else {
       console.log("No hay layer guardado");
       setLayerMap(dispatch, "osm");
       setSelectedLayer("osm");
@@ -203,7 +223,7 @@ const MapCards = ({ type }) => {
           });
         }
       });
-    }else{
+    } else {
       console.log("No hay typeViewData guardado");
       setTypeViewData(dispatch, "default");
       setSelectedTypeViewData("default");
@@ -250,12 +270,14 @@ const MapCards = ({ type }) => {
               justifyContent: "space-evenly",
             }}
           >
-            {/* <select
+            <select
               style={{
                 width: "40%",
                 height: "40px",
                 borderRadius: "5px",
-                border: "1px solid #ccc",
+                background: "white",
+                boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+                border: "0.5px solid rgba(0, 0, 0, 0.2)",
                 padding: "0 10px",
                 fontSize: "16px",
               }}
@@ -270,7 +292,9 @@ const MapCards = ({ type }) => {
                 width: "40%",
                 height: "40px",
                 borderRadius: "5px",
-                border: "1px solid #ccc",
+                background: "white",
+                boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+                border: "0.5px solid rgba(0, 0, 0, 0.2)",
                 padding: "0 10px",
                 fontSize: "16px",
               }}
@@ -279,9 +303,8 @@ const MapCards = ({ type }) => {
               <option value="saab">Saab</option>
               <option value="mercedes">Mercedes</option>
               <option value="audi">Audi</option>
-            </select> */}
+            </select>
           </div>
-          {/* Barra de búsqueda */}
           <div
             style={{
               display: "flex",
@@ -291,18 +314,54 @@ const MapCards = ({ type }) => {
               alignItems: "center",
             }}
           >
-            {/* <input
-              type="text"
-              placeholder="Search"
+            {/* Barra de búsqueda */}
+            <div
               style={{
+                display: "flex",
                 width: "80%",
                 height: "40px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
+                alignItems: "center",
+                justifyContent: "center",
                 padding: "0 10px",
-                fontSize: "16px",
               }}
-            /> */}
+            >
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={handleSearchValue}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderTopLeftRadius: "5px",
+                  borderBottomLeftRadius: "5px",
+                  borderLeft: "1px solid #ccc",
+                  borderRight: "none",
+                  borderTop: "1px solid #ccc",
+                  borderBottom: "1px solid #ccc",
+                  padding: "0 10px",
+                  fontSize: "18px",
+                }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  width: "5%",
+                  height: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background: "white",
+                  borderTop: "1px solid #ccc",
+                  borderBottom: "1px solid #ccc",
+                  borderRight: "1px solid #ccc",
+                  borderTopRightRadius: "5px",
+                  borderBottomRightRadius: "5px",
+                }}
+                onMouseEnter={handleEnterSearch}
+                onMouseLeave={handleLeaveSearch}
+              >
+                <FontAwesomeIcon icon={icons.faSearch} />
+              </div>
+            </div>
           </div>
         </div>
       ) : type === "settings" ? (
@@ -367,8 +426,8 @@ const MapCards = ({ type }) => {
                     background: "linear-gradient(-45deg, #f3f3f3, #f3f3f3)",
                   }}
                   onClick={() => handleOnClick(index)}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={handleEnterSettings}
+                  onMouseLeave={handleLeaveSettings}
                 >
                   <span style={{ fontSize: "20px", border: "none !important" }}>
                     {button.label}
@@ -409,10 +468,14 @@ const MapCards = ({ type }) => {
                             type="radio"
                             value={subButton.value}
                             checked={
-                              selectedLayer === subButton.value || selectedTypeViewData === subButton.value
+                              selectedLayer === subButton.value ||
+                              selectedTypeViewData === subButton.value
                             }
                             onChange={() =>
-                              handleOptionChangeRadio(subButton.value, button.label)
+                              handleOptionChangeRadio(
+                                subButton.value,
+                                button.label
+                              )
                             }
                           />
                           <span style={{ fontSize: "16px", marginLeft: "5px" }}>

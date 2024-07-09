@@ -9,7 +9,9 @@ import "./DashboardLayout.style.css";
 
 // Importar componentes de forma dinámica
 const Overview = lazy(() => import("../../modules/dashboard/Overview"));
-const DataTreatment = lazy(() => import("../../modules/dashboard/DataTreatment"));
+const DataTreatment = lazy(() =>
+  import("../../modules/dashboard/DataTreatment")
+);
 const Predictions = lazy(() => import("../../modules/dashboard/Predictions"));
 const Help = lazy(() => import("../../modules/dashboard/Help"));
 const Settings = lazy(() => import("../../modules/dashboard/Settings"));
@@ -59,10 +61,18 @@ const DashboardLayout = () => {
     overview: <Overview />,
     datatraement: <DataTreatment />,
     map: (
-      <>
+      <div
+        className="map-view-layout"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         {renderMapCards()}
         <MapView />
-      </>
+      </div>
     ),
     predictions: <Predictions />,
     help: <Help />,
