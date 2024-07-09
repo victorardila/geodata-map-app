@@ -11,7 +11,6 @@ const DashboardLayout = lazy(() =>
 );
 const ErrorPage = lazy(() => import("./pages/error/ErrorPage"));
 const RouteLoader = lazy(() => import("./components/common/RouteLoader"));
-const CallbackSocialAuth = lazy(() => import("./pages/callbackSocialAuth/CallbackSocialAuth"));
 
 // Lógica para verificar si el usuario está autenticado
 const isAuthenticated = () => {
@@ -46,9 +45,6 @@ function AppRoutes() {
           <Route path="/" element={<LandingLayout />} />
           <Route path="/payment-market" element={<PaymentMarket />} />
           <Route path="/auth/*" element={<LoginLayout />} />
-          <Route path="/auth/github/callback" element={<CallbackSocialAuth type="github" />} />
-          <Route path="/auth/google/callback" element={<CallbackSocialAuth type="google" />} />
-          <Route path="/auth/facebook/callback" element={<CallbackSocialAuth type="facebook" />} />
           {/* Rutas de error */}
           <Route
             path="/401"
