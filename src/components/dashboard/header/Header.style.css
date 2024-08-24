@@ -22,6 +22,7 @@
 .layout-header-state {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   width: 100%;
 }
 .header-logo-state {
@@ -50,9 +51,25 @@
   width: 100%;
   height: 100%;
 }
-.header-cog-state img{
-  height: 28%;
-  margin-right: 12px;
+.header-item {
+  display: flex;
+  height: 98%;
+  width: 12%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+.header-item:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.header-item img {
+  height: 100% !important;
+}
+.header-item svg{
+  margin: 0 !important;
 }
 .header-cog-state svg{
   height: 30px;
